@@ -33,7 +33,7 @@ export default function SocialHero() {
 
                     {/* 2. Phone (Middle) */}
                     <div className={styles.mobilePhoneContainer}>
-                        <img src="/assets/services/social-phone-mockup.png" alt="Fog Social App" className={styles.mobilePhoneImg} />
+                        <img src="/assets/services/social-phone-mockup.webp" alt="Fog Social App" className={styles.mobilePhoneImg} />
                     </div>
 
                     {/* 3. Cards Grid */}
@@ -87,7 +87,7 @@ export default function SocialHero() {
                         {/* CENTER PHONE IMAGE */}
                         <div className={styles.centerPhone}>
                             <div className={styles.phoneGlow}></div>
-                            <img src="/assets/services/social-phone-mockup.png" alt="Fog Social App" className={styles.phoneImg} />
+                            <img src="/assets/services/social-phone-mockup.webp" alt="Fog Social App" className={styles.phoneImg} />
                         </div>
 
                         {/* RIGHT FEATURES */}

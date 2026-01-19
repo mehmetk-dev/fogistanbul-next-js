@@ -90,8 +90,8 @@
 }
 
 .productImage {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   background: #1a1a1a;
   border-radius: 20px;
   display: flex;
@@ -102,7 +102,7 @@
 }
 
 .productImageIcon {
-  font-size: 60px;
+  font-size: 150px;
   color: var(--primary);
 }
 

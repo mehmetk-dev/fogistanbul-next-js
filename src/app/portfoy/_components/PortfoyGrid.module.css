@@ -20,14 +20,9 @@
   cursor: pointer;
 }
 
-.imageContainer {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/3;
-}
-
 .projectImage {
-  object-fit: cover;
+  width: 100%;
+  display: block;
   transition: transform 0.5s ease;
   filter: grayscale(20%);
 }

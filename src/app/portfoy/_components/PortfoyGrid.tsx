@@ -1,5 +1,5 @@
 "use client";
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
 import { Project } from '@/app/portfoy/_data/portfoyData';
 import styles from './PortfoyGrid.module.css';
 
@@ -16,17 +16,14 @@ export default function PortfoyGrid({ projects }: PortfoyGridProps) {
                         key={p.id}
                         className={styles.projectCard}
                     >
-                        <div className={styles.imageContainer}>
-                            <Image
-                                src={p.image}
-                                alt={p.title}
-                                fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                className={styles.projectImage}
-                                quality={85}
-                                loading="lazy"
-                            />
-                        </div>
+                        {/* Doğal boyutlarda resim - asimetrik masonry için */}
+                        <img
+                            src={p.image}
+                            alt={p.title}
+                            loading="lazy"
+                            width={800}
+                            className={styles.projectImage}
+                        />
 
                         {/* Overlay */}
                         <div className={styles.overlay}>

@@ -1,4 +1,4 @@
-import { getAllPosts, getAllTags } from '@/lib/ghost';
+import { getPaginatedPosts, getAllTags } from '@/lib/ghost';
 import BlogClient from './BlogClient';
 import { Metadata } from 'next';
 import Script from 'next/script';
@@ -43,9 +43,26 @@ const blogSchema = {
 // Revalidate every 60 seconds
 export const revalidate = 60;
 
-export default async function BlogPage() {
-    const posts = await getAllPosts();
-    const tags = await getAllTags();
+// Sayfa başına post sayısı
+const POSTS_PER_PAGE = 12;
+
+interface BlogPageProps {
+    searchParams: Promise<{ page?: string; tag?: string }>;
+}
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+    // searchParams'ı await et (Next.js 15+)
+    const params = await searchParams;
+    
+    // URL'den sayfa ve tag bilgisini al
+    const currentPage = Math.max(1, parseInt(params.page || '1', 10));
+    const activeTag = params.tag || undefined;
+
+    // Server-side pagination ile postları getir
+    const [{ posts, pagination }, tags] = await Promise.all([
+        getPaginatedPosts(currentPage, POSTS_PER_PAGE, activeTag),
+        getAllTags(),
+    ]);
 
     return (
         <main className="blog-page-wrapper">
@@ -59,7 +76,12 @@ export default async function BlogPage() {
             {/* GRAIN OVERLAY */}
             <div className="blog-grain-overlay" />
 
-            <BlogClient initialPosts={posts} tags={tags} />
+            <BlogClient 
+                posts={posts} 
+                tags={tags}
+                pagination={pagination}
+                activeTag={activeTag}
+            />
         </main>
     );
 }

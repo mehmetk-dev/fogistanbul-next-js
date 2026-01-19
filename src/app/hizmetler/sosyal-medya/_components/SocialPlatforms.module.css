@@ -50,7 +50,7 @@
 }
 
 .tiktokCardContent {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%), url('/assets/services/tiktok-content-v2.png');
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%), url('/assets/services/tiktok-content-v2.webp');
   background-size: cover;
   background-blend-mode: overlay;
   height: 100%;
@@ -188,7 +188,7 @@
 
 .scContent {
   flex: 1;
-  background: url('/assets/services/insta-content.png');
+  background: url('/assets/services/insta-content.webp');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -335,7 +335,7 @@
 .fbContent {
   flex: 1;
   min-height: 350px;
-  background: url('/assets/services/fb-content.png');
+  background: url('/assets/services/fb-content.webp');
   background-size: cover;
   background-position: center;
   display: flex;

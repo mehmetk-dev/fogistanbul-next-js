@@ -1,12 +1,16 @@
 import { MetadataRoute } from 'next';
-import { getAllPosts } from '@/lib/ghost';
+import { getAllPostsNoCache } from '@/lib/ghost';
 import { env } from '@/lib/env';
 
-export const revalidate = 3600; // Revalidate every hour
+// Her istek için yeniden oluştur (dinamik sitemap)
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = env.NEXT_PUBLIC_SITE_URL || 'https://fogistanbul.com';
   const now = new Date();
+  
+  console.log('[Sitemap] Generating sitemap for:', siteUrl);
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -114,11 +118,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Dynamic blog posts
+  // Dynamic blog posts from Ghost CMS
   let blogPosts: MetadataRoute.Sitemap = [];
   
   try {
-    const posts = await getAllPosts();
+    console.log('[Sitemap] Fetching blog posts from Ghost...');
+    const posts = await getAllPostsNoCache();
+    console.log(`[Sitemap] Found ${posts.length} blog posts`);
+    
     blogPosts = posts.map((post) => ({
       url: `${siteUrl}/blog/${post.slug}`,
       lastModified: post.updated_at ? new Date(post.updated_at) : (post.published_at ? new Date(post.published_at) : now),
@@ -126,9 +133,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
   } catch (error) {
-    console.error('Error fetching blog posts for sitemap:', error);
+    console.error('[Sitemap] Error fetching blog posts:', error);
     // Continue without blog posts if there's an error
   }
+
+  const totalUrls = staticPages.length + blogPosts.length;
+  console.log(`[Sitemap] Generated ${totalUrls} URLs (${staticPages.length} static + ${blogPosts.length} blog posts)`);
 
   return [...staticPages, ...blogPosts];
 }

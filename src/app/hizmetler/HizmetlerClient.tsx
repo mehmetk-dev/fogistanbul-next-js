@@ -20,8 +20,6 @@ const Hizmetler = () => {
 
       {/* Hero & Sticky Layout Wrapper */}
       <div className={styles.heroStickyWrapper}>
-        {/* Background Decor */}
-        <div className={styles.backgroundDecor} />
 
         <div className={styles.layoutContainer}>
           <div className={styles.servicesGrid}>

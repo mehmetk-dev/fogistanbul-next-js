@@ -1,69 +1,90 @@
 "use client";
-import { useState } from 'react';
-import { GhostPost, GhostTag } from '@/lib/ghost';
+import { useState, useCallback } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { GhostPost, GhostTag, GhostPagination } from '@/lib/ghost';
 import styles from './BlogClient.module.css';
 import { BlogHero, BlogFilters, BlogGrid, BlogFooter } from '@/app/blog/_components';
 
 interface BlogClientProps {
-    initialPosts: GhostPost[];
+    posts: GhostPost[];
     tags: GhostTag[];
+    pagination: GhostPagination;
+    activeTag?: string;
 }
 
-const BlogClient = ({ initialPosts, tags }: BlogClientProps) => {
-    // State
-    const [posts] = useState<GhostPost[]>(initialPosts);
-    const [activeTag, setActiveTag] = useState<string | null>(null);
+const BlogClient = ({ posts, tags, pagination, activeTag }: BlogClientProps) => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    
+    // Client-side arama için state (server'a gitmeden filtreler)
     const [searchTerm, setSearchTerm] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
 
-    // Filter Logic
+    // Client-side arama filtresi (sadece mevcut sayfadaki postları filtreler)
     const filteredPosts = posts.filter(post => {
-        const matchesTag = activeTag ? post.primary_tag && post.primary_tag.slug === activeTag : true;
-        const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase());
-        return matchesTag && matchesSearch;
+        if (!searchTerm) return true;
+        return post.title.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
-    // Pagination Logic
-    const postsPerPage = 12;
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
-    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+    // URL'i güncelle (sayfa değişimi veya tag değişimi)
+    const updateUrl = useCallback((params: { page?: number; tag?: string | null }) => {
+        const current = new URLSearchParams(searchParams.toString());
+        
+        if (params.page !== undefined) {
+            if (params.page <= 1) {
+                current.delete('page');
+            } else {
+                current.set('page', params.page.toString());
+            }
+        }
+        
+        if (params.tag !== undefined) {
+            if (params.tag === null || params.tag === '') {
+                current.delete('tag');
+            } else {
+                current.set('tag', params.tag);
+            }
+            // Tag değişince sayfayı 1'e sıfırla
+            current.delete('page');
+        }
+        
+        const query = current.toString();
+        router.push(query ? `/blog?${query}` : '/blog');
+    }, [router, searchParams]);
 
-    // Handlers
+    // Tag değişimi handler
     const handleTagChange = (slug: string | null) => {
-        setActiveTag(slug);
-        setCurrentPage(1);
+        updateUrl({ tag: slug });
     };
 
+    // Arama handler (client-side, URL'e gitmez)
     const handleSearchChange = (term: string) => {
         setSearchTerm(term);
-        setCurrentPage(1);
     };
 
+    // Sayfa değişimi handler
     const handlePageChange = (page: number) => {
-        setCurrentPage(page);
+        updateUrl({ page });
         window.scrollTo({ top: window.innerHeight * 0.5, behavior: 'smooth' });
     };
 
     return (
         <div className={styles.blogPage}>
 
-            <BlogHero postCount={filteredPosts.length} />
+            <BlogHero postCount={pagination.total} />
 
             <BlogFilters
                 tags={tags}
-                activeTag={activeTag}
+                activeTag={activeTag || null}
                 searchTerm={searchTerm}
                 onTagChange={handleTagChange}
                 onSearchChange={handleSearchChange}
             />
 
             <BlogGrid
-                posts={currentPosts}
-                totalPosts={filteredPosts.length}
-                currentPage={currentPage}
-                totalPages={totalPages}
+                posts={filteredPosts}
+                totalPosts={pagination.total}
+                currentPage={pagination.page}
+                totalPages={pagination.pages}
                 onPageChange={handlePageChange}
             />
 

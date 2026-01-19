@@ -11,12 +11,13 @@
 type EnvSchema = {
     // Public (Client-side) Environment Variables
     NEXT_PUBLIC_SITE_URL: string;
-    NEXT_PUBLIC_GHOST_URL: string;
+    NEXT_PUBLIC_GHOST_URL: string; // Public URL for images/browser (https://blog.fogistanbul.com)
     NEXT_PUBLIC_GHOST_CONTENT_KEY: string;
     NEXT_PUBLIC_GA_ID?: string; // Google Analytics ID (optional)
     NEXT_PUBLIC_SENTRY_DSN?: string; // Sentry DSN (optional)
     
     // Server-side Environment Variables (optional for some)
+    GHOST_INTERNAL_URL?: string; // Docker internal URL for SSR fetch (http://ghost-app:2368)
     EMAILJS_SERVICE_ID?: string;
     EMAILJS_TEMPLATE_ID?: string;
     EMAILJS_PUBLIC_KEY?: string;
@@ -104,6 +105,13 @@ function validateEnv(): EnvConfig {
     if (emailServiceId) config.EMAILJS_SERVICE_ID = emailServiceId;
     if (emailTemplateId) config.EMAILJS_TEMPLATE_ID = emailTemplateId;
     if (emailPublicKey) config.EMAILJS_PUBLIC_KEY = emailPublicKey;
+
+    // Ghost Internal URL for Docker network (server-side API calls)
+    // Falls back to NEXT_PUBLIC_GHOST_URL if not set
+    const ghostInternalUrl = process.env.GHOST_INTERNAL_URL;
+    if (ghostInternalUrl) {
+        config.GHOST_INTERNAL_URL = ghostInternalUrl;
+    }
 
     // Validate URL formats
     if (config.NEXT_PUBLIC_SITE_URL) {

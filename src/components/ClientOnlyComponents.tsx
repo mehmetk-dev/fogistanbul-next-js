@@ -45,18 +45,19 @@ export default function ClientOnlyComponents() {
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 0,
-            opacity: 0.8,
+            zIndex: 1,
+            opacity: 1,
             pointerEvents: 'none',
-            mixBlendMode: 'screen',
           }}
         >
           <LightRays
-            raysColor="#ed6d8f"
-            raysSpeed={0.8}
-            lightSpread={0.9}
-            rayLength={2.0}
-            pulsating={true}
+            raysOrigin="top-center"
+            raysColor="#ee2b7c"
+            raysSpeed={0.6}
+            lightSpread={1.0}
+            rayLength={1.8}
+            fadeDistance={0.9}
+            pulsating={false}
           />
         </div>
       )}

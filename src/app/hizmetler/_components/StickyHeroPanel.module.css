@@ -90,9 +90,11 @@
 /* Desktop Logic (>1024px) */
 @media (min-width: 1024px) {
   .stickyPanel {
+    position: -webkit-sticky; /* Safari desteği */
     position: sticky;
     top: 120px;
     height: fit-content;
+    align-self: start; /* Grid içinde sticky çalışması için gerekli */
   }
 
   .title {

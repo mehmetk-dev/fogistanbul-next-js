@@ -1,7 +1,7 @@
 export const images = {
     catalogMockup: "/assets/services/catalog-mockup.webp",
-    brochureMockup: "/assets/services/fog-brochure-mockup.png",
-    stationeryMockup: "/assets/services/fog-stationery-mockup.png",
+    brochureMockup: "/assets/services/fog-brochure-mockup.webp",
+    stationeryMockup: "/assets/services/fog-stationery-mockup.webp",
 };
 
 export const processSteps = [

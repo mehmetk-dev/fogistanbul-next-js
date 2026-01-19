@@ -15,7 +15,7 @@ export default function DigitalHero() {
         <section className={styles.section}>
             {/* Semantic Image for SEO */}
             <Image
-                src="/assets/services/digital-marketing-meeting.jpg"
+                src="/assets/services/digital-marketing-meeting.webp"
                 alt="FOG İstanbul Dijital Pazarlama ve Strateji Toplantısı - Google Ads ve SEO Analizi"
                 fill
                 className={styles.backgroundImage}

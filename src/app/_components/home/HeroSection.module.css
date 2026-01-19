@@ -190,9 +190,15 @@
   z-index: 50;
   width: 100%;
   pointer-events: none;
-  background: transparent; /* Remove default button background */
-  border: none; /* Remove default button border */
-  padding: 0; /* Remove default button padding */
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.scrollIndicatorWrapper:hover {
+  background: transparent;
+  border: none;
+  transform: translateX(-50%);
 }
 
 .scrollIndicatorText {
@@ -204,6 +210,12 @@
   pointer-events: auto;
   margin-bottom: 4px;
   text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  transition: none;
+}
+
+.scrollIndicatorText:hover {
+  color: rgba(255, 255, 255, 0.7);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -219,13 +231,14 @@
   justify-content: center;
   pointer-events: auto;
   box-shadow: 0 0 20px rgba(237, 109, 143, 0.15);
-  transition: all 0.3s ease;
+  transition: none !important;
 }
 
 .scrollBtnInner:hover {
-  border-color: #ed6d8f;
-  box-shadow: 0 0 30px rgba(237, 109, 143, 0.25);
-  transform: translateY(5px);
+  border-color: rgba(237, 109, 143, 0.3);
+  box-shadow: 0 0 20px rgba(237, 109, 143, 0.15);
+  transform: none;
+  background-color: rgba(18, 18, 26, 0.6) !important;
 }
 
 .scrollBtnIcon {

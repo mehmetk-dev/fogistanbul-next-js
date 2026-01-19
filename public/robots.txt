@@ -1,9 +1,15 @@
-# *
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
 
-# Host
-Host: https://fogistanbul.com
+# AI Botlarını engelle
+User-agent: GPTBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: CCBot
+Disallow: /
 
-# Sitemaps
+# Sitemap - Next.js tarafından dinamik olarak oluşturulur
 Sitemap: https://fogistanbul.com/sitemap.xml

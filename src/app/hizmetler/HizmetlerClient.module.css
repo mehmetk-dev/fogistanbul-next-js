@@ -5,22 +5,12 @@
   padding-bottom: 150px;
   background-color: #221018;
   position: relative;
+  /* overflow-x kaldırıldı - sticky çalışması için gerekli */
 }
 
 .heroStickyWrapper {
   position: relative;
-}
-
-.backgroundDecor {
-  position: fixed;
-  top: 20%;
-  right: -10%;
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, rgba(237, 109, 143, 0.15), transparent 60%);
-  filter: blur(80px);
-  z-index: -1;
-  pointer-events: none;
+  /* overflow yok - sticky çalışması için gerekli */
 }
 
 .layoutContainer {
