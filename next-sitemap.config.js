@@ -35,4 +35,6 @@ module.exports = {
             lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
         };
     },
+    // Note: Dynamic blog posts are now handled by Next.js native sitemap.ts
+    // This config is only used for robots.txt generation
 };

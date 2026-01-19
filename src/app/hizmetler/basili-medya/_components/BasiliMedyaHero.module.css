@@ -138,3 +138,13 @@
     transform: translateY(-10px) scale(1.05);
   }
 }
+
+@media (max-width: 900px) {
+  .badge {
+    display: none;
+  }
+
+  .title {
+    margin-top: 100px;
+  }
+}

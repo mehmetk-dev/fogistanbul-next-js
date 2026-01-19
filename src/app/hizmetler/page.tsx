@@ -10,6 +10,20 @@ export const metadata: Metadata = {
         description: 'FOG İstanbul\'un sunduğu dijital pazarlama, web tasarım ve prodüksiyon hizmetleri.',
         url: '/hizmetler',
         type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul Hizmetlerimiz',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Hizmetlerimiz | FOG İstanbul',
+        description: 'FOG İstanbul\'un sunduğu dijital pazarlama, web tasarım ve prodüksiyon hizmetleri.',
+        images: ['/og-image.webp'],
     },
     alternates: {
         canonical: '/hizmetler',

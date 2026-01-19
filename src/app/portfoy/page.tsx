@@ -10,6 +10,20 @@ export const metadata: Metadata = {
         description: 'Web tasarım, branding, prodüksiyon ve dijital pazarlama alanındaki seçilmiş projelerimiz.',
         url: '/portfoy',
         type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul Portfolyo',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Portfolyo | FOG İstanbul',
+        description: 'Web tasarım, branding, prodüksiyon ve dijital pazarlama alanındaki seçilmiş projelerimiz.',
+        images: ['/og-image.webp'],
     },
     alternates: {
         canonical: '/portfoy',

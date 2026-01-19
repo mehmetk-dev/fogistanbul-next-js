@@ -4,16 +4,13 @@
  * Backend Analogy: Spring Boot'da caching strategy gibi
  * - Static assets cache'lenir (CDN gibi)
  * - API responses cache'lenir (Redis gibi)
- * - Offline fallback sağlar
  */
 
 const CACHE_NAME = 'fog-istanbul-v1';
-const OFFLINE_PAGE = '/offline';
 
 // Assets to cache on install
 const STATIC_ASSETS = [
   '/',
-  '/offline',
   '/manifest.json',
   '/favicon.ico',
 ];
@@ -101,9 +98,15 @@ self.addEventListener('fetch', (event) => {
             return cachedResponse;
           }
           
-          // If it's a navigation request and no cache, show offline page
+          // For navigation requests, return a basic offline response
           if (request.mode === 'navigate') {
-            return caches.match(OFFLINE_PAGE);
+            return new Response('İnternet bağlantınız kesilmiş görünüyor.', {
+              status: 503,
+              statusText: 'Service Unavailable',
+              headers: new Headers({
+                'Content-Type': 'text/html; charset=utf-8',
+              }),
+            });
           }
           
           // For other requests, return a basic response

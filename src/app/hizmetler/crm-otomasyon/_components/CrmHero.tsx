@@ -26,7 +26,10 @@ export default function CrmHero() {
 
             {/* Aşağı Kaydırma Butonu */}
             <button
-                onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+                onClick={() => {
+                    const scrollPosition = window.innerHeight - 70;
+                    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                }}
                 className={styles.scrollButton}
             >
                 <span className={`material-symbols-outlined ${styles.scrollButtonIcon}`}>settings</span>

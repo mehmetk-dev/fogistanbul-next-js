@@ -12,6 +12,20 @@ export const metadata: Metadata = {
         description: 'Dijital pazarlama, web tasarım trendleri, SEO ipuçları ve teknoloji dünyasından en güncel haberler ve stratejiler.',
         url: '/blog',
         type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul Blog',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Blog | FOG İstanbul',
+        description: 'Dijital pazarlama, web tasarım trendleri, SEO ipuçları ve teknoloji dünyasından en güncel haberler ve stratejiler.',
+        images: ['/og-image.webp'],
     },
     alternates: {
         canonical: 'https://fogistanbul.com/blog',

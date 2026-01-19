@@ -2,12 +2,36 @@
 
 .portfolioSection {
   padding: 50px 24px;
-  background: #0a0a12;
   position: relative;
+  background: linear-gradient(180deg, rgba(12, 8, 14, 0.98) 0%, rgba(12, 8, 14, 0.97) 20%, rgba(12, 8, 14, 0.96) 50%, rgba(10, 8, 12, 0.97) 80%, rgba(10, 8, 12, 0.95) 100%);
   overflow-x: hidden;
   overflow-y: visible;
   width: 100%;
   max-width: 100vw;
+}
+
+.portfolioSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(12, 8, 14, 0.98), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portfolioSection::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, rgba(10, 8, 12, 0.98));
+  pointer-events: none;
+  z-index: 1;
 }
 
 .backgroundDecoration {
@@ -27,6 +51,11 @@
   margin: 0 auto;
   position: relative;
   z-index: 10;
+}
+
+.container > * {
+  position: relative;
+  z-index: 2;
 }
 
 .header {

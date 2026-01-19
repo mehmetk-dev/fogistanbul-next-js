@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GhostTag } from '@/lib/ghost';
 import styles from './BlogFilters.module.css';
 
@@ -13,6 +13,27 @@ interface BlogFiltersProps {
 
 export default function BlogFilters({ tags, activeTag, searchTerm, onTagChange, onSearchChange }: BlogFiltersProps) {
     const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
+
+    const handleClose = () => {
+        setIsClosing(true);
+        setTimeout(() => {
+            setIsMobileSearchOpen(false);
+            setIsClosing(false);
+        }, 300); // Animation duration
+    };
+
+    // Prevent body scroll when modal is open
+    useEffect(() => {
+        if (isMobileSearchOpen && !isClosing) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isMobileSearchOpen, isClosing]);
 
     return (
         <section className={`stagger-4 ${styles.filtersSection}`}>
@@ -73,29 +94,42 @@ export default function BlogFilters({ tags, activeTag, searchTerm, onTagChange, 
                 </button>
 
                 {/* MOBILE SEARCH OVERLAY */}
-                <div className={`${styles.mobileSearchOverlay} ${isMobileSearchOpen ? styles.mobileSearchOverlayOpen : ''}`} aria-hidden={!isMobileSearchOpen}>
-                    <label htmlFor="mobile-blog-search" className="sr-only">Blog yazılarında ara</label>
-                    <input
-                        id="mobile-blog-search"
-                        type="text"
-                        placeholder="Yazılarda ara..."
-                        value={searchTerm}
-                        autoFocus={isMobileSearchOpen}
-                        onChange={(e) => onSearchChange(e.target.value)}
-                        className={styles.mobileSearchInput}
-                        aria-label="Blog yazılarında ara"
-                    />
-                    <button
-                        onClick={() => {
-                            setIsMobileSearchOpen(false);
-                            onSearchChange('');
-                        }}
-                        className={styles.mobileSearchClose}
-                        aria-label="Aramayı kapat"
+                {(isMobileSearchOpen || isClosing) && (
+                    <div 
+                        className={`${styles.mobileSearchOverlay} ${isMobileSearchOpen && !isClosing ? styles.mobileSearchOverlayOpen : ''} ${isClosing ? styles.mobileSearchOverlayClosing : ''}`} 
+                        aria-hidden={!isMobileSearchOpen}
+                        onClick={handleClose}
                     >
-                        <span className="material-symbols-outlined" aria-hidden="true">close</span>
-                    </button>
-                </div>
+                        <div 
+                            className={styles.mobileSearchHeader}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <label htmlFor="mobile-blog-search" className="sr-only">Blog yazılarında ara</label>
+                            <input
+                                id="mobile-blog-search"
+                                type="text"
+                                placeholder="Yazılarda ara..."
+                                value={searchTerm}
+                                autoFocus={isMobileSearchOpen && !isClosing}
+                                onChange={(e) => onSearchChange(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        handleClose();
+                                    }
+                                }}
+                                className={styles.mobileSearchInput}
+                                aria-label="Blog yazılarında ara"
+                            />
+                            <button
+                                onClick={handleClose}
+                                className={styles.mobileSearchSubmit}
+                                aria-label="Ara"
+                            >
+                                <span className="material-symbols-outlined" aria-hidden="true">search</span>
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Gradient Fade to Soften Edge */}

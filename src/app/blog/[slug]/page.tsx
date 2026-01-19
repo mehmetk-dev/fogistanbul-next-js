@@ -22,17 +22,49 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     const cleanDescription = (post.meta_description || post.custom_excerpt || post.excerpt || '').replace(/\n/g, ' ').substring(0, 160);
+    const keywords = post.tags?.map(tag => tag.name) || [];
+    keywords.push('dijital pazarlama', 'blog', 'fog istanbul');
+
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fogistanbul.com';
+    const postUrl = `${siteUrl}/blog/${slug}`;
+    
+    const ogImage = post.feature_image || '/og-image.webp';
+    const defaultImage = {
+        url: '/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: post.meta_title || post.title,
+    };
+
+    const ogImages = post.feature_image 
+        ? [{ url: post.feature_image, width: 1200, height: 630, alt: post.meta_title || post.title }]
+        : [defaultImage];
 
     return {
         title: post.meta_title || post.title,
         description: cleanDescription,
+        keywords: keywords,
+        authors: post.authors?.map(author => ({ name: author.name || 'FOG İstanbul Team' })) || [{ name: 'FOG İstanbul Team' }],
         openGraph: {
             title: post.meta_title || post.title,
             description: cleanDescription,
-            images: post.feature_image ? [post.feature_image] : [],
+            url: postUrl,
+            siteName: 'FOG İstanbul',
+            locale: 'tr_TR',
+            type: 'article',
+            publishedTime: post.published_at,
+            modifiedTime: post.updated_at || post.published_at,
+            authors: post.authors?.map(author => author.name || 'FOG İstanbul Team') || ['FOG İstanbul Team'],
+            images: ogImages,
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.meta_title || post.title,
+            description: cleanDescription,
+            images: [ogImage],
         },
         alternates: {
-            canonical: post.canonical_url || `https://fogistanbul.com/blog/${slug}`,
+            canonical: post.canonical_url || postUrl,
         }
     }
 }

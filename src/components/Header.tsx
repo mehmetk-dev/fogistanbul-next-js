@@ -27,12 +27,20 @@ const Header = () => {
     ];
 
     useEffect(() => {
+        // İlk yüklemede scroll pozisyonunu kontrol et
+        const checkScroll = () => {
+            const offset = window.scrollY;
+            setScrolled(offset > 50);
+        };
+        
+        // Sayfa yüklendiğinde kontrol et
+        checkScroll();
+        
         let ticking = false;
         const handleScroll = () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    const offset = window.scrollY;
-                    setScrolled(offset > 50);
+                    checkScroll();
                     ticking = false;
                 });
                 ticking = true;

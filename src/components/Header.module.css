@@ -44,6 +44,9 @@
   display: flex;
   align-items: center;
   gap: 2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .logoTextRed {
@@ -402,14 +405,27 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 20px 0 !important;
+    padding: 16px 0 !important;
   }
 
   .headerScrolled {
-    padding: 16px 0 !important;
+    padding: 12px 0 !important;
   }
 
   .logoText {
     font-size: 24px !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .logoTextWhite {
+    font-weight: 300 !important;
+  }
+
+  .mobileToggleLine {
+    width: 28px;
+  }
+
+  .mobileToggleLineMiddle {
+    width: 20px;
   }
 }

@@ -222,6 +222,8 @@
   justify-content: center;
   color: #fff;
   font-size: 24px;
+  line-height: 1;
+  text-align: center;
 }
 
 .platformSection {
@@ -241,54 +243,59 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 20px 30px;
+  justify-content: space-between;
+  padding: 0px 20px 20px;
   width: 100%;
+  height: 100vh;
   min-height: 100vh;
+  max-height: 100vh;
+  position: relative;
 }
 
 .mobilePhoneContainer {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+  transform: translateY(-20px);
 }
 
 .mobilePhoneImg {
-  width: 70%;
-  max-width: 320px;
+  width: 130%;
+  max-width: 400px;
   height: auto;
   filter: drop-shadow(0 15px 30px rgba(237, 109, 143, 0.35));
+  object-fit: contain;
 }
 
 .mobileTitleBlock {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
+  flex-shrink: 0;
 }
 
 .mobileTitleBlock h1 {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 1.7rem;
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -2px;
   text-transform: uppercase;
   color: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .mobileTitleBlock p {
-  font-size: 0.85rem;
+  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
   color: #aaa;
-  line-height: 1.5;
+  line-height: 1.4;
   padding: 0 10px;
 }
 
 .mobileCardsGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  width: 100%;
-  margin-bottom: 25px;
+  display: none;
 }
 
 .mobileCard {
@@ -323,18 +330,22 @@
   gap: 5px;
   cursor: pointer;
   color: #ccc;
-  margin-top: auto;
-  padding-top: 20px;
+  flex-shrink: 0;
+  padding-bottom: 10px;
+  position: absolute;
+  bottom:100px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .mobileScrollBtnIcon {
-  font-size: 28px;
+  font-size: 36px;
   color: var(--primary);
   animation: bounce 2s infinite;
 }
 
 .mobileScrollBtnText {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   letter-spacing: 2px;
   text-transform: uppercase;
 }

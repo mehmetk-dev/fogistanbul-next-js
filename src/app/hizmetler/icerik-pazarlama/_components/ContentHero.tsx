@@ -53,10 +53,10 @@ export default function ContentHero() {
 
                 {/* Connecting Lines (SVG) - Desktop */}
                 <svg className={styles.desktopLines}>
-                    <line x1="50%" y1="50%" x2="80%" y2="25%" className={styles.line} />
-                    <line x1="50%" y1="50%" x2="70%" y2="75%" className={styles.line} />
-                    <line x1="50%" y1="50%" x2="20%" y2="35%" className={styles.line} />
-                    <line x1="50%" y1="50%" x2="30%" y2="80%" className={styles.line} />
+                    <line x1="50%" y1="50%" x2="70%" y2="18%" className={styles.line} />
+                    <line x1="50%" y1="50%" x2="70%" y2="82%" className={styles.line} />
+                    <line x1="50%" y1="50%" x2="30%" y2="18%" className={styles.line} />
+                    <line x1="50%" y1="50%" x2="30%" y2="82%" className={styles.line} />
                 </svg>
 
                 {/* Connecting Lines (SVG) - Mobile */}

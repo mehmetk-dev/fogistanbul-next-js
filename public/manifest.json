@@ -16,6 +16,18 @@
       "src": "/favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/assets/fog_logo_pink.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/fog_logo_pink.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "screenshots": [
@@ -42,8 +54,8 @@
       "url": "/hizmetler",
       "icons": [
         {
-          "src": "/favicon.ico",
-          "sizes": "48x48"
+          "src": "/assets/fog_logo_pink.png",
+          "sizes": "192x192"
         }
       ]
     },
@@ -54,8 +66,8 @@
       "url": "/iletisim",
       "icons": [
         {
-          "src": "/favicon.ico",
-          "sizes": "48x48"
+          "src": "/assets/fog_logo_pink.png",
+          "sizes": "192x192"
         }
       ]
     },
@@ -66,8 +78,8 @@
       "url": "/blog",
       "icons": [
         {
-          "src": "/favicon.ico",
-          "sizes": "48x48"
+          "src": "/assets/fog_logo_pink.png",
+          "sizes": "192x192"
         }
       ]
     }

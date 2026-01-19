@@ -10,6 +10,20 @@ export const metadata: Metadata = {
         description: 'Markanız için SEO uyumlu makale, blog, video senaryosu ve stratejik içerik pazarlama hizmetleri. Google\'da yükselin.',
         url: '/hizmetler/icerik-pazarlama',
         type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul İçerik Pazarlama',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'İçerik Pazarlama ve SEO | FOG İstanbul',
+        description: 'Markanız için SEO uyumlu makale, blog, video senaryosu ve stratejik içerik pazarlama hizmetleri. Google\'da yükselin.',
+        images: ['/og-image.webp'],
     },
     alternates: {
         canonical: '/hizmetler/icerik-pazarlama',

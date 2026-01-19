@@ -1,12 +1,39 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { useState, useEffect, useRef } from 'react';
 import { adPlatforms } from '@/app/hizmetler/reklam-yonetimi/_data/reklamData';
 import styles from './AdsPlatforms.module.css';
 
 export default function AdsPlatforms() {
+    const [showFade, setShowFade] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const checkScroll = () => {
+            if (!sectionRef.current) return;
+            
+            const rect = sectionRef.current.getBoundingClientRect();
+            // Section viewport'un en üstündeyse (veya çok yakınsa) fade göster
+            const isAtTop = rect.top >= -50 && rect.top <= 100;
+            setShowFade(isAtTop);
+        };
+
+        // İlk kontrol
+        checkScroll();
+
+        // Scroll event listener
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        window.addEventListener('resize', checkScroll);
+        
+        return () => {
+            window.removeEventListener('scroll', checkScroll);
+            window.removeEventListener('resize', checkScroll);
+        };
+    }, []);
+
     return (
-        <section id="platforms-section" className={styles.section}>
-            <div className={styles.sectionFadeTop}></div>
+        <section ref={sectionRef} id="platforms-section" className={styles.section}>
+            {showFade && <div className={styles.sectionFadeTop}></div>}
 
             {/* Decorative Title */}
             <div className={styles.header}>
@@ -23,7 +50,7 @@ export default function AdsPlatforms() {
 
             <div className={styles.platformsGrid}>
                 {adPlatforms.map((platform, i) => (
-                    <div key={i} className={styles.platformCard} style={{ borderTop: `4px solid ${platform.color}` }}>
+                    <div key={i} className={styles.platformCard}>
                         <div className={styles.glowBg} style={{ background: platform.color, right: '-50px', top: '-50px' }}></div>
 
                         {/* Main Logo - Top Right */}

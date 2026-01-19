@@ -120,6 +120,19 @@
   object-fit: contain;
 }
 
+/* Desktop - Larger logo */
+@media (min-width: 1025px) {
+  .logoContainer {
+    width: 180px;
+    height: 180px;
+  }
+
+  .logoImage {
+    width: 75%;
+    height: 75%;
+  }
+}
+
 .contentNode {
   background: rgba(20, 20, 20, 0.95);
   backdrop-filter: blur(20px);
@@ -173,13 +186,13 @@
 
 .node-2 {
   bottom: 10%;
-  right: 0%;
+  right: 8%;
   transform: none;
   animation: floatDelayed 7s ease-in-out infinite;
 }
 
 .node-3 {
-  top: 16%;
+  top: 12%;
   left: 8%;
   transform: none;
   animation: floatDelayed 8s ease-in-out infinite;

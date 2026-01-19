@@ -5,6 +5,27 @@ import styles from './LegalPage.module.css';
 export const metadata: Metadata = {
     title: 'Kullanım Şartları | FOG İstanbul',
     description: 'FOG İstanbul web sitesi kullanım koşulları. Siteyi kullanırken uymanız gereken kurallar ve yasal bildirimler.',
+    keywords: ['kullanım şartları', 'terms of service', 'yasal uyarı', 'site kuralları', 'fog istanbul'],
+    openGraph: {
+        title: 'Kullanım Şartları | FOG İstanbul',
+        description: 'FOG İstanbul web sitesi kullanım koşulları. Siteyi kullanırken uymanız gereken kurallar ve yasal bildirimler.',
+        url: '/kullanim-sartlari',
+        type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul Kullanım Şartları',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Kullanım Şartları | FOG İstanbul',
+        description: 'FOG İstanbul web sitesi kullanım koşulları. Siteyi kullanırken uymanız gereken kurallar ve yasal bildirimler.',
+        images: ['/og-image.webp'],
+    },
     alternates: {
         canonical: 'https://fogistanbul.com/kullanim-sartlari',
     },

@@ -2,7 +2,7 @@
 
 .crmPage {
   background: #0a0a0a;
-  min-height: 100vh;
+  min-height: 90vh;
   color: #fff;
   font-family: var(--font-montserrat), sans-serif;
   overflow-x: hidden;

@@ -5,6 +5,27 @@ import styles from './LegalPage.module.css';
 export const metadata: Metadata = {
     title: 'Gizlilik Politikası | FOG İstanbul',
     description: 'FOG İstanbul web sitesi gizlilik politikası. Kişisel verilerinizi nasıl topladığımız ve koruduğumuz hakkında bilgi edinin.',
+    keywords: ['gizlilik politikası', 'privacy policy', 'veri koruma', 'çerezler', 'cookie policy', 'fog istanbul'],
+    openGraph: {
+        title: 'Gizlilik Politikası | FOG İstanbul',
+        description: 'FOG İstanbul web sitesi gizlilik politikası. Kişisel verilerinizi nasıl topladığımız ve koruduğumuz hakkında bilgi edinin.',
+        url: '/gizlilik-politikasi',
+        type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul Gizlilik Politikası',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Gizlilik Politikası | FOG İstanbul',
+        description: 'FOG İstanbul web sitesi gizlilik politikası. Kişisel verilerinizi nasıl topladığımız ve koruduğumuz hakkında bilgi edinin.',
+        images: ['/og-image.webp'],
+    },
     alternates: {
         canonical: 'https://fogistanbul.com/gizlilik-politikasi',
     },

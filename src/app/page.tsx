@@ -10,11 +10,20 @@ export const metadata: Metadata = {
         description: 'İstanbul merkezli dijital pazarlama, sosyal medya yönetimi ve profesyonel video prodüksiyon ajansı.',
         url: '/',
         type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul | Yeni Nesil Dijital Ajans',
+            },
+        ],
     },
     twitter: {
         card: 'summary_large_image',
         title: 'FOG İstanbul | Yeni Nesil Dijital Ajans',
         description: 'İstanbul merkezli dijital pazarlama, sosyal medya yönetimi ve profesyonel video prodüksiyon ajansı.',
+        images: ['/og-image.webp'],
     },
 };
 

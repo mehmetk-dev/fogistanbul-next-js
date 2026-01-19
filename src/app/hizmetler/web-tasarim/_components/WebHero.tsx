@@ -50,8 +50,7 @@ export default function WebHero() {
                     <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#27c93f' }}></span>
                 </div>
                 <div className={styles.scrollButtonInner}>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 600 }}>Devam Et</span>
-                    <span className="material-symbols-outlined" style={{ fontSize: '1.2rem', color: '#ed6d8f', animation: 'bounce 2s infinite' }}>expand_more</span>
+                    <span className="material-symbols-outlined" style={{ fontSize: '1.5rem', color: '#ed6d8f', animation: 'bounce 2s infinite' }}>expand_more</span>
                 </div>
             </button>
         </section>

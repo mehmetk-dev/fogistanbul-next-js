@@ -5,7 +5,7 @@ export default function AdsHero() {
     const scrollToPlatforms = () => {
         const section = document.getElementById('platforms-section');
         if (section) {
-            const y = section.getBoundingClientRect().top + window.scrollY - 40;
+            const y = section.getBoundingClientRect().top + window.scrollY - 80;
             window.scrollTo({ top: y, behavior: 'smooth' });
         }
     };

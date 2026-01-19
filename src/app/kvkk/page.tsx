@@ -5,6 +5,27 @@ import styles from './LegalPage.module.css';
 export const metadata: Metadata = {
     title: 'KVKK Aydınlatma Metni | FOG İstanbul',
     description: '6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aydınlatma metni ve haklarınız.',
+    keywords: ['kvkk', 'kişisel verilerin korunması', 'gizlilik', 'veri güvenliği', 'aydınlatma metni', 'fog istanbul'],
+    openGraph: {
+        title: 'KVKK Aydınlatma Metni | FOG İstanbul',
+        description: '6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aydınlatma metni ve haklarınız.',
+        url: '/kvkk',
+        type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul KVKK',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'KVKK Aydınlatma Metni | FOG İstanbul',
+        description: '6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aydınlatma metni ve haklarınız.',
+        images: ['/og-image.webp'],
+    },
     alternates: {
         canonical: 'https://fogistanbul.com/kvkk',
     },

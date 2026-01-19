@@ -10,6 +10,20 @@ export const metadata: Metadata = {
         description: 'Kullanıcı dostu, hızlı ve SEO uyumlu web site tasarım çözümleri. Modern teknolojilerle profesyonel web siteleri.',
         url: '/hizmetler/web-tasarim',
         type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul Web Tasarım',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Web Tasarım ve Yazılım Çözümleri | FOG İstanbul',
+        description: 'Kullanıcı dostu, hızlı ve SEO uyumlu web site tasarım çözümleri. Modern teknolojilerle profesyonel web siteleri.',
+        images: ['/og-image.webp'],
     },
     alternates: {
         canonical: '/hizmetler/web-tasarim',

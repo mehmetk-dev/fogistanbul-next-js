@@ -6,7 +6,7 @@ export default function DigitalHero() {
     const scrollToProcess = () => {
         const el = document.getElementById('process-section');
         if (el) {
-            const y = el.getBoundingClientRect().top + window.scrollY - 80;
+            const y = el.getBoundingClientRect().top + window.scrollY - 10;
             window.scrollTo({ top: y, behavior: 'smooth' });
         }
     };

@@ -17,18 +17,18 @@ import "./globals.css";
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  display: "optional", // Faster initial render - shows fallback immediately
-  weight: ["400", "500", "600", "700", "800", "900"], // Removed 300 (not used)
-  preload: false, // Disable preload when using display:optional to avoid warnings
-  fallback: ["system-ui", "arial"], // Better fallback for faster rendering
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
-  display: "optional", // Faster initial render
-  weight: ["400", "500", "600", "700"], // Removed 300 (not used)
-  preload: false, // Disable preload when using display:optional to avoid warnings
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  preload: true,
   fallback: ["system-ui", "sans-serif"],
 });
 
@@ -54,10 +54,10 @@ export const metadata: Metadata = {
     description: "İstanbul merkezli dijital pazarlama, sosyal medya yönetimi ve profesyonel video prodüksiyon ajansı.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.webp",
         width: 1200,
         height: 630,
-        alt: "FOG İstanbul Dijital Ajans",
+        alt: "FOG İstanbul | Yeni Nesil Dijital Ajans",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FOG İstanbul | Yeni Nesil Dijital Ajans",
     description: "İstanbul merkezli dijital pazarlama, sosyal medya yönetimi ve profesyonel video prodüksiyon ajansı.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.webp"],
   },
   robots: {
     index: true,
@@ -81,11 +81,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png" },
+      { url: "/assets/fog_logo_pink.png", sizes: "192x192", type: "image/png" },
+      { url: "/assets/fog_logo_pink.png", sizes: "512x512", type: "image/png" },
     ],
     apple: [
-      { url: "/icons/icon-152x152.png", sizes: "152x152", type: "image/png" },
+      { url: "/assets/fog_logo_pink.png", sizes: "152x152", type: "image/png" },
     ],
   },
 };
@@ -109,8 +109,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="FOG İstanbul" />
-        {/* Apple Touch Icons - Using favicon as fallback */}
-        <link rel="apple-touch-icon" href="/favicon.ico" />
+        {/* Apple Touch Icons - Using FOG logo */}
+        <link rel="apple-touch-icon" href="/assets/fog_logo_pink.png" />
       </head>
       <body className="antialiased selection:bg-primary selection:text-white">
         <PWARegister />

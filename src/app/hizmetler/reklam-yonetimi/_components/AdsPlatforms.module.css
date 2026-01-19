@@ -1,8 +1,9 @@
 /* AdsPlatforms CSS Modules */
 
 .section {
-  min-height: 100vh;
-  padding: clamp(40px, 5vh, 80px) 5%;
+  height: 90vh;
+  max-height: 90vh;
+  padding: clamp(20px, 3vh, 40px) 5%;
   position: relative;
   z-index: 1;
   display: flex;
@@ -10,6 +11,7 @@
   justify-content: center;
   align-items: center;
   background: transparent;
+  overflow: hidden;
 }
 
 .sectionFadeTop {
@@ -17,15 +19,20 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 150px;
+  height: clamp(60px, 8vh, 100px); /* Reduced height - only covers header, not cards */
   background: linear-gradient(to top, transparent, #0a0a0a);
   pointer-events: none;
-  z-index: 10;
+  z-index: 0; /* Very low, below everything */
+  transition: opacity 0.3s ease;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: clamp(15px, 2vh, 25px);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 40; /* Above fade area and cards */
+  background: transparent; /* Ensure header background is transparent */
 }
 
 .badgeWrapper {
@@ -76,27 +83,52 @@
 .platformsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: clamp(15px, 2vh, 20px);
   max-width: 1200px;
   width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 30; /* Above fade area */
 }
 
 .platformCard {
   background: #111;
   border: 1px solid #222;
   border-radius: 24px;
-  padding: 50px;
-  margin-bottom: 40px;
+  padding: clamp(30px, 4vh, 40px);
+  margin-bottom: 0;
   position: relative;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  min-height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  z-index: 25; /* Higher z-index to ensure it's above fade area */
+}
+
+/* Platform-specific border-top colors */
+.platformCard:nth-child(1) {
+  border-top: 4px solid #4285F4; /* Google Ads */
+}
+
+.platformCard:nth-child(2) {
+  border-top: 4px solid #C13584; /* Meta Ads */
+}
+
+.platformCard:nth-child(3) {
+  border-top: 4px solid #00f2ea; /* TikTok Ads */
+}
+
+.platformCard:nth-child(4) {
+  border-top: 4px solid #0A66C2; /* LinkedIn Ads */
 }
 
 .platformCard:hover {
-  border-color: #444;
+  border-right-color: #444;
+  border-bottom-color: #444;
+  border-left-color: #444;
   transform: translateY(-10px);
 }
 
@@ -136,8 +168,9 @@
   display: flex;
   gap: 15px;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: clamp(10px, 1.5vh, 20px);
   min-height: 32px;
+  flex-shrink: 0;
 }
 
 .subIcons img {
@@ -155,9 +188,9 @@
 }
 
 .platformTitle {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 800;
-  margin-bottom: 15px;
+  margin-bottom: clamp(8px, 1vh, 15px);
   color: #fff;
   font-family: var(--font-montserrat), sans-serif;
 }
@@ -166,60 +199,74 @@
   font-family: var(--font-space-grotesk), sans-serif;
   color: #888;
   letter-spacing: 2px;
-  font-size: 0.9rem;
-  margin-bottom: 30px;
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  margin-bottom: clamp(10px, 1.5vh, 20px);
   text-transform: uppercase;
 }
 
 .platformDesc {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  line-height: 1.5;
   color: #aaa;
   max-width: 500px;
   font-family: var(--font-space-grotesk), sans-serif;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   flex: 1;
+  overflow-y: auto;
 }
 
 @media (max-width: 900px) {
+  .section {
+    height: 100vh;
+    max-height: 100vh;
+    padding: clamp(15px, 2vh, 30px) 5%;
+  }
+
   .platformsGrid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: clamp(12px, 1.5vh, 20px);
   }
 
   .platformCard {
-    padding: 24px !important;
+    padding: clamp(20px, 3vh, 30px) !important;
+    height: auto;
+    min-height: 0;
   }
 
   .mainIconAbsolute {
-    top: 24px;
-    right: 24px;
-    width: 40px;
-    height: 40px;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
   }
 
   .platformTitle {
-    font-size: 1.3rem !important;
-    margin-bottom: 5px !important;
+    font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+    margin-bottom: 8px !important;
   }
 
   .platformHead {
-    margin-bottom: 8px !important;
-    font-size: 0.8rem;
+    margin-bottom: 10px !important;
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
   }
 
   .platformDesc {
-    font-size: 0.95rem !important;
-    line-height: 1.5 !important;
+    font-size: clamp(0.85rem, 1.1vw, 1rem) !important;
+    line-height: 1.4 !important;
   }
 }
 
 @media (max-width: 768px) {
+  .section {
+    height: 100vh;
+    max-height: 100vh;
+  }
+
   .platformCard {
-    padding: 30px;
+    padding: clamp(18px, 2.5vh, 25px);
   }
 
   .platformTitle {
-    font-size: 1.8rem;
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
   }
 }

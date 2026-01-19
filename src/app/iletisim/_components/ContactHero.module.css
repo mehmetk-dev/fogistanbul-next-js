@@ -130,6 +130,10 @@
     text-align: center;
   }
 
+  .contactDetailsMargin {
+    margin-top: -10px;
+  }
+
   .mobileScrollBtn {
     display: flex;
     flex-direction: column;
@@ -140,6 +144,9 @@
     cursor: pointer;
     animation: bounce 2s infinite;
     opacity: 0.8;
+    background: transparent;
+    border: none;
+    color: inherit;
   }
 }
 

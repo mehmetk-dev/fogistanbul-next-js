@@ -10,6 +10,20 @@ export const metadata: Metadata = {
         description: 'Profesyonel sosyal medya yönetimi ile markanızın takipçi kitlesini büyütün, etkileşimi artırın ve sadık müşteriler kazanın.',
         url: '/hizmetler/sosyal-medya',
         type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul Sosyal Medya Yönetimi',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Sosyal Medya Yönetimi | FOG İstanbul',
+        description: 'Profesyonel sosyal medya yönetimi ile markanızın takipçi kitlesini büyütün, etkileşimi artırın ve sadık müşteriler kazanın.',
+        images: ['/og-image.webp'],
     },
     alternates: {
         canonical: '/hizmetler/sosyal-medya',

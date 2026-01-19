@@ -1,7 +1,7 @@
 /* Global Styles - CSS Modules kullanacağız, Tailwind kaldırıldı */
 
 :root {
-  --background: #0a0a0a;
+  --background: #0f0a0d;
   --foreground: #ffffff;
   --primary: #ed6d8e;
 }
@@ -20,7 +20,10 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(180deg, rgba(15, 10, 13, 0.98) 0%, rgba(12, 8, 11, 0.98) 50%, rgba(10, 8, 10, 0.98) 100%),
+              radial-gradient(circle at 50% 0%, rgba(237, 109, 143, 0.03), transparent 50%),
+              radial-gradient(circle at 50% 100%, rgba(237, 109, 143, 0.02), transparent 50%);
+  background-color: #0f0a0d;
   color: var(--foreground);
   font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
@@ -1005,7 +1008,7 @@ body {
    ENTRANCE ANIMATIONS (Scroll-triggered)
    ========================================= */
 
-/* Elements start hidden */
+/* Elements start hidden - but will be shown immediately if in viewport */
 .fade-in-up,
 .slide-in-left,
 .slide-in-right,
@@ -1017,6 +1020,19 @@ body {
   opacity: 0;
   transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   /* Only use will-change on desktop and when animating for better performance */
+}
+
+/* Force visibility for elements that should be visible immediately */
+.fade-in-up.visible,
+.slide-in-left.visible,
+.slide-in-right.visible,
+.scale-in.visible,
+.zoom-rotate-in.visible,
+.blur-in.visible,
+.bounce-in.visible,
+.flip-in.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Only apply will-change when element is about to animate (not always) */

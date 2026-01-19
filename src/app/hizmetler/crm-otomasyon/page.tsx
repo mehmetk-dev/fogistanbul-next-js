@@ -10,6 +10,20 @@ export const metadata: Metadata = {
         description: 'Müşteri takibi, satış otomasyonu ve veri yönetimi. İş süreçlerinizi dijitalleştirerek kaostan kurtarın.',
         url: '/hizmetler/crm-otomasyon',
         type: 'website',
+        images: [
+            {
+                url: '/og-image.webp',
+                width: 1200,
+                height: 630,
+                alt: 'FOG İstanbul CRM Otomasyon',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'CRM ve İş Süreçleri Otomasyonu | FOG İstanbul',
+        description: 'Müşteri takibi, satış otomasyonu ve veri yönetimi. İş süreçlerinizi dijitalleştirerek kaostan kurtarın.',
+        images: ['/og-image.webp'],
     },
     alternates: {
         canonical: '/hizmetler/crm-otomasyon',

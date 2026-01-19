@@ -27,45 +27,65 @@ export default function BlogPostClient({ post, relatedPosts }: Props) {
     const formatDate = (dateStr: string) => {
         if (!dateStr) return '';
         const date = new Date(dateStr);
-        return date.toLocaleDateString('tr-TR', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-        });
+        const months = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
+        const day = date.getDate();
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+        return `${day} ${month} ${year}`;
     };
+
+    const calculateReadingTime = (html: string) => {
+        const text = html.replace(/<[^>]*>/g, '').trim();
+        const words = text.split(/\s+/).length;
+        const readingTime = Math.ceil(words / 200); // 200 kelime/dakika
+        return readingTime;
+    };
+
+    const author = post.authors?.[0] || { name: 'FOG İstanbul', profile_image: null };
+    const readingTime = calculateReadingTime(post.html);
 
     return (
         <div className={styles.blogPostPage}>
             <div className={styles.scrollProgressBar} style={{ width: `${scrollProgress}%` }} />
 
-            {/* HERO SECTION MATCHING VITE PROJECT */}
-            <div className={styles.heroContainer}>
+            {/* HEADER SECTION */}
+            <div className={styles.headerContainer}>
                 <Link href="/blog" className={styles.backLink}>
                     <span>←</span> LİSTEYE DÖN
                 </Link>
 
-                <div className={styles.heroCard}>
-                    {post.feature_image && (
+                {/* TITLE */}
+                <h1 className={styles.postTitle}>{post.title}</h1>
+
+                {/* AUTHOR INFO */}
+                <div className={styles.authorInfo}>
+                    <div className={styles.authorAvatar}>
+                        {author.profile_image ? (
+                            <img src={author.profile_image} alt={author.name} />
+                        ) : (
+                            <div className={styles.avatarPlaceholder}>
+                                <span className="material-symbols-outlined">person</span>
+                            </div>
+                        )}
+                    </div>
+                    <div className={styles.authorDetails}>
+                        <div className={styles.authorName}>{author.name}</div>
+                        <div className={styles.authorMeta}>
+                            {formatDate(post.published_at)} — {readingTime} dk okuma
+                        </div>
+                    </div>
+                </div>
+
+                {/* FEATURE IMAGE */}
+                {post.feature_image && (
+                    <div className={styles.featureImageContainer}>
                         <img
                             src={post.feature_image}
                             alt={post.title}
-                            className={styles.heroImage}
+                            className={styles.featureImage}
                         />
-                    )}
-                    {/* Gradient Overlay */}
-                    <div className={styles.heroOverlay}></div>
-
-                    {/* Content Overlay */}
-                    <div className={styles.heroContent}>
-                        <div className={styles.heroMeta}>
-                            {post.primary_tag && <span className={styles.tag}>{post.primary_tag.name}</span>}
-                            <span>{formatDate(post.published_at)}</span>
-                            <span>•</span>
-                            <span>{post.authors?.[0]?.name || 'FOG İstanbul'}</span>
-                        </div>
-                        <h1 className={styles.postTitle}>{post.title}</h1>
                     </div>
-                </div>
+                )}
             </div>
 
             {/* CONTENT */}
@@ -91,7 +111,16 @@ export default function BlogPostClient({ post, relatedPosts }: Props) {
                             {relatedPosts.slice(0, 3).map(p => (
                                 <Link key={p.id} href={`/blog/${p.slug}`} className={styles.relatedCard}>
                                     <div className={styles.rcImageWrapper}>
-                                        <img src={p.feature_image || ''} alt={p.title} />
+                                        <img 
+                                            src={p.feature_image && p.feature_image.trim() ? p.feature_image : 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80'} 
+                                            alt={p.title} 
+                                            onError={(e) => {
+                                                const target = e.target as HTMLImageElement;
+                                                if (target.src !== 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80') {
+                                                    target.src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80';
+                                                }
+                                            }}
+                                        />
                                     </div>
                                     <div className={styles.rcContent}>
                                         <div className={styles.rcMeta}>
@@ -107,13 +136,6 @@ export default function BlogPostClient({ post, relatedPosts }: Props) {
                     </div>
                 </section>
             )}
-
-            {/* BACK TO LIST BOTTOM */}
-            <div className={styles.bottomBackBtn}>
-                <Link href="/blog" className={styles.pillBtn}>
-                    <span>←</span> Tüm Yazılar
-                </Link>
-            </div>
         </div>
     );
 }
