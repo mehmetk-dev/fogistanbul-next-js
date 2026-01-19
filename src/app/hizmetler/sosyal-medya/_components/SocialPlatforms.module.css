@@ -1,0 +1,435 @@
+/* SocialPlatforms CSS Modules */
+
+.platformSection {
+  position: relative;
+  z-index: 2;
+}
+
+.heading {
+  text-align: center;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  margin-bottom: 40px;
+  margin-top: 100px;
+  font-weight: 800;
+  font-family: var(--font-montserrat), sans-serif;
+  letter-spacing: -1px;
+  overflow-wrap: break-word;
+  padding: 0 10px;
+}
+
+.headingHighlight {
+  color: var(--primary);
+}
+
+.platformShowcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  height: 700px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.socialCard {
+  width: 320px;
+  height: 600px;
+  background: #111;
+  border-radius: 20px;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* TIKTOK STYLE */
+.tiktokCard {
+  /* TikTok specific styles */
+}
+
+.tiktokCardContent {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%), url('/assets/services/tiktok-content-v2.png');
+  background-size: cover;
+  background-blend-mode: overlay;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.tiktokOverlay {
+  /* TikTok overlay */
+}
+
+.tiktokContentText {
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
+  right: 80px;
+  text-align: left;
+  z-index: 3;
+}
+
+.tiktokUsername {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.tiktokDescription {
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.tiktokMusicInfo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+
+.tiktokMusicIcon {
+  font-size: 16px;
+}
+
+.tiktokUi {
+  position: absolute;
+  right: 10px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  z-index: 3;
+}
+
+.ttIconCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+}
+
+.ttIconBg {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.ttIconText {
+  font-size: 0.8rem;
+}
+
+.ttIconRed {
+  color: #fe2c55;
+}
+
+.ttSpinDisk {
+  width: 50px;
+  height: 50px;
+  background: #222;
+  border: 8px solid #111;
+  border-radius: 50%;
+  animation: spin 4s linear infinite;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3;
+}
+
+/* INSTAGRAM STYLE */
+.instaCard {
+  /* Instagram specific styles */
+}
+
+.scHeader {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.scProfilePic {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-radius: 50%;
+}
+
+.scHeaderInfo {
+  flex: 1;
+  text-align: left;
+}
+
+.scHeaderName {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.scHeaderVerified {
+  color: #3897f0;
+  font-size: 14px;
+}
+
+.scHeaderLocation {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.scContent {
+  flex: 1;
+  background: url('/assets/services/insta-content.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+}
+
+.scActions {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scIcons {
+  display: flex;
+  gap: 15px;
+}
+
+.scIconRed {
+  color: #ed4956;
+}
+
+.scPostInfo {
+  padding: 0 15px 15px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.scLikes {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.scCaption {
+  /* Caption text */
+}
+
+.scCaptionBold {
+  font-weight: 700;
+}
+
+.scCaptionHashtag {
+  color: #666;
+}
+
+.scViewComments {
+  color: #888;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.heartAnimContainer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  pointer-events: none;
+}
+
+.heartAnim {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 40px;
+  color: #ed4956;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.heart1 {
+  transition-delay: 0.1s;
+  transform: rotate(-10deg);
+}
+
+.heart2 {
+  transition-delay: 0.3s;
+  transform: rotate(15deg) translateX(-20px);
+}
+
+/* FACEBOOK STYLE */
+.fbCard {
+  /* Facebook specific styles */
+}
+
+.fbHeader {
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.fbProfile {
+  width: 40px;
+  height: 40px;
+  background: #1877F2;
+  border-radius: 50%;
+  position: relative;
+}
+
+.fbProfileOnline {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: #31a24c;
+  border-radius: 50%;
+  border: 2px solid #18191a;
+}
+
+.fbHeaderInfo {
+  text-align: left;
+}
+
+.fbHeaderName {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.fbHeaderMeta {
+  font-size: 0.75rem;
+  color: #b0b3b8;
+}
+
+.fbHeaderMetaIcon {
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.fbHeaderMore {
+  margin-left: auto;
+  color: #b0b3b8;
+}
+
+.fbPostText {
+  padding: 0 15px 10px;
+  font-size: 0.9rem;
+  color: #e4e6eb;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.fbContent {
+  flex: 1;
+  min-height: 350px;
+  background: url('/assets/services/fb-content.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.fbStats {
+  padding: 10px 15px;
+  font-size: 0.8rem;
+  color: #b0b3b8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fbFooter {
+  padding: 10px 15px;
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  color: #b0b3b8;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.9rem;
+}
+
+.fbBtn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* DESKTOP FAN EFFECT */
+@media (min-width: 1024px) {
+  .tiktokCard {
+    transform: translateX(80px) scale(0.9) rotate(-15deg);
+    z-index: 1;
+  }
+
+  .instaCard {
+    z-index: 2;
+    transform: translateY(-20px) scale(1);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .fbCard {
+    transform: translateX(-80px) scale(0.9) rotate(15deg);
+    z-index: 1;
+  }
+
+  .socialCard:hover {
+    transform: translateY(-40px) scale(1.1) rotate(0deg) translateX(0) !important;
+    z-index: 10;
+    border-color: var(--primary);
+    box-shadow: 0 50px 100px rgba(237, 109, 143, 0.2);
+  }
+
+  .socialCard:hover .heartAnim {
+    opacity: 1;
+    transform: translateY(-50px) scale(1.5);
+  }
+}
+
+/* MOBILE SCROLL (SNAP) */
+@media (max-width: 1023px) {
+  .platformShowcase {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 30px;
+    scrollbar-width: none;
+    height: auto;
+  }
+
+  .platformShowcase::-webkit-scrollbar {
+    display: none;
+  }
+
+  .socialCard {
+    min-width: 85%;
+    scroll-snap-align: center;
+    transform: none !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+  }
+}

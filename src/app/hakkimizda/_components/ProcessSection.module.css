@@ -1,0 +1,149 @@
+/* ProcessSection CSS Modules */
+
+.processSection {
+  min-height: 100vh;
+  padding: 0 10%;
+  border-bottom: 1px solid rgba(45, 26, 34, 1);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.processHeader {
+  margin-bottom: 60px;
+  max-width: 800px;
+}
+
+.processBadge {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  color: var(--primary);
+}
+
+.processTitle {
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+  line-height: 0.9;
+  font-family: var(--font-montserrat), sans-serif;
+  text-transform: uppercase;
+}
+
+.processDescription {
+  font-size: 1.2rem;
+  color: #bbb;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.processCard {
+  padding: 40px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  height: 320px;
+}
+
+.processCard:hover {
+  border-color: rgba(237, 109, 143, 0.4);
+  transform: translateY(-10px) scale(1.02);
+  background: rgba(237, 109, 143, 0.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.processCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.processCard:hover::before {
+  transform: scaleX(1);
+}
+
+.processId {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 8rem;
+  color: rgba(255, 255, 255, 0.03);
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-weight: 800;
+  line-height: 1;
+  transition: all 0.5s ease;
+  z-index: 0;
+  letter-spacing: -10px;
+}
+
+.processCard:hover .processId {
+  color: rgba(237, 109, 143, 0.2);
+  transform: translateX(-10px) translateY(10px) rotate(-10deg);
+}
+
+.processCardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #fff;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
+}
+
+.processCardDesc {
+  font-size: 1rem;
+  color: #aaa;
+  line-height: 1.6;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1200px) {
+  .processTitle {
+    font-size: 1.8rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .processDescription {
+    font-size: 1rem;
+  }
+
+  .processSection {
+    height: auto;
+    padding: 80px 20px;
+  }
+
+  .processCard {
+    height: auto;
+    min-height: 250px;
+  }
+}

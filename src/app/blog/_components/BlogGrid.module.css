@@ -1,0 +1,158 @@
+/* BlogGrid CSS Modules */
+
+.gridSection {
+  padding: 0 40px 100px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 120px 0;
+  font-family: "Space Mono", monospace;
+  color: #555;
+}
+
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px 30px;
+}
+
+.postCard {
+  text-decoration: none;
+  color: inherit;
+  animation: fadeSlideUp 0.6s ease forwards;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  display: block;
+}
+
+.postCard:hover {
+  transform: translateY(-8px);
+}
+
+.postCard:hover .postImage {
+  transform: scale(1.05);
+}
+
+.imageContainer {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background: #111;
+}
+
+.postImage {
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), filter 0.4s ease;
+}
+
+.postCard:hover .postImage {
+  filter: brightness(1.1);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.6) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.imageOverlayVisible {
+  opacity: 1;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.categoryTag {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: #ed6d8f;
+  text-transform: uppercase;
+}
+
+.dateText {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  color: #555;
+}
+
+.postTitle {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0;
+  color: #ccc;
+  transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.6em;
+}
+
+.postCard:hover .postTitle {
+  color: #fff;
+}
+
+.excerpt {
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  color: #666;
+  line-height: 1.6;
+  margin-top: 12px;
+  max-width: 95%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+/* Animations */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .postsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .postsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gridSection {
+    padding: 0 20px 60px;
+  }
+
+  .postsGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

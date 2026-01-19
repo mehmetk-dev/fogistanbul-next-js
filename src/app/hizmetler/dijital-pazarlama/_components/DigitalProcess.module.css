@@ -1,0 +1,193 @@
+/* DigitalProcess CSS Modules */
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 5%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  background: #050505;
+}
+
+.visualTransition {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent, #080808);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+.badge {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  color: #666;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.1;
+  width: 100%;
+  overflow-wrap: break-word;
+  padding: 0 5px;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.titleHighlight {
+  color: #4200ff;
+  display: block;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.timelineContainer {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.marketingCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  flex: 1 1 300px;
+}
+
+.marketingCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #fff;
+  transform: translateY(-10px);
+}
+
+.stepNum {
+  font-size: 4rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.1);
+  line-height: 1;
+  margin-bottom: 20px;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.marketingCard:hover .stepNum {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.stepIcon {
+  font-size: 50px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.stepTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.stepDesc {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1rem;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .marketingCard {
+    transform: none !important;
+    margin-bottom: 40px !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+    background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .timelineContainer {
+    display: block !important;
+    padding-left: 30px;
+    border-left: 2px dashed rgba(66, 0, 255, 0.3);
+    margin-left: 10px;
+  }
+
+  .marketingCard::before {
+    content: '';
+    position: absolute;
+    left: -39px;
+    top: 40px;
+    width: 16px;
+    height: 16px;
+    background: #050505;
+    border: 3px solid #4200ff;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 15px #4200ff;
+  }
+
+  .stepNum {
+    font-size: 3rem !important;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0.1;
+    margin: 0;
+  }
+
+  .stepIcon {
+    font-size: 40px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .stepTitle {
+    font-size: 1.3rem !important;
+  }
+
+  .titleHighlight {
+    font-size: 7vw !important;
+    line-height: 1.1 !important;
+    word-wrap: break-word;
+    display: block;
+  }
+}
+
+@media (max-width: 1024px) {
+  .connectLine {
+    display: none;
+  }
+}

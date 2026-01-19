@@ -1,0 +1,23 @@
+/* ReklamYonetimiClient CSS Modules */
+
+.adsPage {
+  background: #0a0a0a;
+  min-height: 100vh;
+  color: #fff;
+  font-family: var(--font-montserrat), sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.pinkGlow {
+  position: fixed;
+  top: -30%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(237, 109, 143, 0.08), transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}

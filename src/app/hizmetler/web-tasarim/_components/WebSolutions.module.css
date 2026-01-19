@@ -1,0 +1,169 @@
+/* WebSolutions CSS Modules */
+
+.section {
+  min-height: 100vh;
+  padding: 0 5%;
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sectionMobile {
+  padding: 80px 5%;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.heading {
+  font-size: clamp(2rem, 6vw, 5rem);
+  margin-bottom: 60px;
+  text-align: center;
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 0.9;
+  color: #fff;
+}
+
+.headingMobile {
+  margin-bottom: 40px;
+}
+
+.headingOutline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--primary);
+}
+
+.responsiveGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+.solutionCard {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.solutionCard:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgba(237, 109, 143, 0.2);
+}
+
+.solutionCard:hover .cardArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(237, 109, 143, 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBoxIcon {
+  font-size: 26px;
+}
+
+.cardId {
+  font-family: 'JetBrains Mono', monospace;
+  color: #555;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.cardBody {
+  margin-bottom: 24px;
+}
+
+.cardTitle {
+  font-size: 1.7rem;
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.cardSubtitle {
+  font-size: 0.95rem;
+  color: #ccc;
+  font-weight: 500;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.cardFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.featureIcon {
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.cardArrow {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s;
+  color: var(--primary);
+}
+
+.cardArrowIcon {
+  font-size: 28px;
+}
+
+@media (max-width: 768px) {
+  .responsiveGrid {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .solutionCard {
+    min-width: 100%;
+    scroll-snap-align: center;
+    margin: 0;
+  }
+}

@@ -1,0 +1,247 @@
+/* ContactForm CSS Modules */
+
+.formContainer {
+  /* Base styles - mobile will override */
+}
+
+.shardForm {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 95%;
+  padding-right: 60px;
+}
+
+.shardWrapper {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px 32px;
+  border-radius: 4px 24px 4px 24px;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.shardWrapper:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(10px) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.shardWrapperActive {
+  background: rgba(10, 5, 8, 0.8);
+  border-color: var(--primary);
+  box-shadow: 0 0 30px rgba(237, 109, 143, 0.15);
+}
+
+.shardWrapperError {
+  border-color: #ff0055;
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.2);
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.shardWrapperDelay1 {
+  /* Delay 1 */
+}
+
+.shardWrapperDelay2 {
+  transform: translateX(15px);
+}
+
+.shardWrapperDelay3 {
+  transform: translateX(30px);
+}
+
+.shardWrapperDelay4 {
+  transform: translateX(45px);
+}
+
+.shardWrapperLarge {
+  /* Large wrapper for textarea */
+}
+
+.shardWrapper label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.shardWrapper input,
+.shardWrapper textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.3rem;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.shardWrapper textarea {
+  resize: none;
+  height: 100px;
+}
+
+.shardWrapper input::placeholder,
+.shardWrapper textarea::placeholder {
+  color: rgba(255, 255, 255, 0.15);
+  font-weight: 300;
+}
+
+.glowBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 1px transparent;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.shardWrapperActive .glowBorder {
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.errBadge {
+  background: #ff0055;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 9px;
+  margin-left: 8px;
+  vertical-align: middle;
+  font-weight: 800;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+.btnLabel {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: white;
+}
+
+.arrowIcon {
+  color: var(--primary);
+  font-size: 28px;
+}
+
+.pushBtn {
+  --primary: 237, 109, 143;
+  --secondary: 160, 20, 70;
+  width: 70px;
+  height: 60px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  outline: 10px solid rgba(var(--primary), 0.2);
+  border-radius: 100%;
+  position: relative;
+  transition: 0.3s;
+  background: transparent;
+}
+
+.pushBtnBack {
+  background: rgb(var(--secondary));
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pushBtnFront {
+  background: linear-gradient(0deg, rgba(var(--primary), 0.6) 20%, rgba(var(--primary)) 50%);
+  box-shadow: 0 0.5em 1em -0.2em rgba(var(--secondary), 0.5);
+  border-radius: 100%;
+  position: absolute;
+  border: 1px solid rgb(var(--secondary));
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-15%);
+  transition: 0.15s;
+}
+
+.pushBtn:hover .pushBtnFront {
+  transform: translateY(-20%);
+  box-shadow: 0 0.7em 1em -0.2em rgba(var(--secondary), 0.6);
+}
+
+.pushBtn:active .pushBtnFront {
+  transform: translateY(0%);
+  box-shadow: 0 0;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@media (max-width: 1366px) {
+  .shardWrapper {
+    padding: 18px 24px;
+  }
+
+  .shardWrapper input,
+  .shardWrapper textarea {
+    font-size: 1.1rem;
+  }
+
+  .shardForm {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .formContainer {
+    min-height: 100vh;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .shardWrapper,
+  .btnContainer {
+    transform: none !important;
+  }
+
+  .shardForm {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .shardWrapper textarea {
+    height: 80px;
+  }
+}

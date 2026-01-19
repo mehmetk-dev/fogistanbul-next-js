@@ -1,0 +1,186 @@
+/* ContentServices CSS Modules */
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 5%;
+  scroll-margin-top: 0px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Decorative corner dots at section corners */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--primary);
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--primary);
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.bottomFade {
+  display: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  margin-bottom: 0;
+  opacity: 0.8;
+}
+
+.badge {
+  color: var(--primary);
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.titleHighlight {
+  color: var(--primary);
+}
+
+.bentoGridWrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 5%;
+  overflow: visible;
+}
+
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.bentoCard {
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  border-bottom: 4px solid var(--primary);
+  border-radius: 24px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.bentoCard:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+}
+
+.bentoCard:hover .cardIcon {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.cardIcon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--primary);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cardTitle {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.cardDesc {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1rem;
+  color: #999;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cardDescWithMargin {
+  margin-top: 15px;
+}
+
+.span2 {
+  grid-column: span 2;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cardNumber {
+  color: #333;
+  font-family: 'Space Mono', monospace;
+  font-size: 3rem;
+  opacity: 0.3;
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .bentoGridWrapper {
+    padding: 40px 20px;
+    overflow: hidden;
+  }
+
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .span2 {
+    grid-column: span 1;
+  }
+
+  /* No decorative lines */
+}

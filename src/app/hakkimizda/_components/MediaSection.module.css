@@ -1,0 +1,41 @@
+/* MediaSection CSS Modules */
+
+.mediaSection {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  background: radial-gradient(circle at center, rgba(237, 109, 143, 0.1), transparent 70%);
+}
+
+.abstractGrid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.5;
+}
+
+.mediaText {
+  z-index: 2;
+  font-size: 5vw;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.05);
+  font-weight: 900;
+  font-family: var(--font-montserrat), sans-serif;
+  text-align: center;
+  line-height: 0.9;
+}
+
+@media (max-width: 1200px) {
+  .mediaSection {
+    height: 250px;
+  }
+}

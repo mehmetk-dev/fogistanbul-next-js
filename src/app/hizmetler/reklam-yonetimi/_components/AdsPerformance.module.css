@@ -1,0 +1,263 @@
+/* AdsPerformance CSS Modules */
+
+.section {
+  padding: 150px 5%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: transparent;
+}
+
+.decorativeGlow {
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(66, 133, 244, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heading {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 80px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.headingHighlight {
+  color: #4285F4;
+}
+
+.dashboardPreview {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radarCircle {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(66, 133, 244, 0.1);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radarCircle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 350px;
+  border: 1px solid rgba(66, 133, 244, 0.1);
+  border-radius: 50%;
+}
+
+.radarSweep {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -250px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(66, 133, 244, 0.1) 60deg, transparent 60.1deg);
+  animation: radarSpin 4s infinite linear;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.perfCard {
+  width: 90%;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.perfCard:hover {
+  transform: translateY(-10px);
+  border-color: #4285F4;
+}
+
+.pcHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.liveBadge {
+  background: rgba(0, 255, 136, 0.1);
+  color: #00ff88;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.pcHeaderMore {
+  font-size: 20px;
+  color: #666;
+}
+
+.pcMetrics {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.metricItem {
+  text-align: left;
+}
+
+.mLabel {
+  font-size: 0.8rem;
+  color: #666;
+  font-family: var(--font-space-grotesk), sans-serif;
+  margin-bottom: 5px;
+}
+
+.mVal {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.mValHighlight {
+  color: #00ff88;
+}
+
+.pcGraph {
+  width: 100%;
+  height: 80px;
+  position: relative;
+}
+
+.graphSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.pulsePoint {
+  animation: pulseWhite 1.5s infinite;
+}
+
+.floatStat {
+  position: absolute;
+  background: #222;
+  border: 1px solid #444;
+  padding: 10px 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 3;
+}
+
+.floatStat span {
+  font-size: 18px;
+  color: #4285F4;
+}
+
+.fs1 {
+  top: 20px;
+  left: 0;
+  animation: floatSlow 4s infinite ease-in-out;
+}
+
+.fs2 {
+  bottom: 20px;
+  right: 0;
+  animation: floatSlow 5s infinite ease-in-out reverse;
+}
+
+.launchBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #4285F4;
+  color: #fff;
+  padding: 18px 50px;
+  border-radius: 50px;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 10px 30px rgba(66, 133, 244, 0.3);
+  margin-top: 80px;
+}
+
+.launchBtn:hover {
+  background: #fff;
+  color: #4285F4;
+  transform: scale(1.05);
+}
+
+@keyframes radarSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseWhite {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@media (max-width: 450px) {
+  .mVal {
+    font-size: 1.2rem;
+  }
+}

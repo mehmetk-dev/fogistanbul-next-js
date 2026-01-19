@@ -1,0 +1,136 @@
+/* SuccessModal CSS Modules */
+
+.successModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.successModal {
+  background: rgba(20, 10, 15, 0.9);
+  border: 1px solid rgba(237, 109, 143, 0.3);
+  border-radius: 40px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
+  position: relative;
+  animation: popUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 40px 100px -20px rgba(237, 109, 143, 0.3);
+  overflow: hidden;
+}
+
+.successModal::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(237, 109, 143, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.successIconWrapper {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(237, 109, 143, 0.2), rgba(0, 0, 0, 0));
+  border: 1px solid rgba(237, 109, 143, 0.5);
+  border-radius: 50%;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  box-shadow: 0 0 50px rgba(237, 109, 143, 0.4);
+  position: relative;
+  z-index: 2;
+  animation: successPulse 2s infinite;
+}
+
+.successIcon {
+  font-size: 48px;
+}
+
+.successModal h3 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-montserrat), sans-serif;
+  text-transform: uppercase;
+}
+
+.successModal p {
+  color: #b0b0b0;
+  font-family: var(--font-space-grotesk), sans-serif;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.closeBtn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 18px 50px;
+  border-radius: 100px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 10px 40px -10px rgba(237, 109, 143, 0.6);
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.closeBtn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 50px -15px rgba(237, 109, 143, 0.8);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes successPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(237, 109, 143, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 30px rgba(237, 109, 143, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(237, 109, 143, 0);
+  }
+}

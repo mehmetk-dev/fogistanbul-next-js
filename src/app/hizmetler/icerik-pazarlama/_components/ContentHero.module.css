@@ -1,0 +1,353 @@
+/* ContentHero CSS Modules */
+
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 5% 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 50px;
+}
+
+.heroText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 5;
+}
+
+.title {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(2rem, 6vw, 5rem);
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #fff;
+  animation: slideUpFade 0.8s ease 0.2s forwards;
+  opacity: 0;
+}
+
+.textGradient {
+  background: linear-gradient(135deg, #fff 40%, var(--primary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.2rem;
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 550px;
+  animation: slideUpFade 0.8s ease 0.4s forwards;
+  opacity: 0;
+}
+
+.heroScrollBtn {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeIn 1s ease 1s forwards;
+}
+
+.scrollBtnText {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.scrollMouse {
+  width: 26px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  position: relative;
+}
+
+.scrollWheel {
+  width: 4px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollMouse 2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
+}
+
+.heroVisual {
+  flex: 1;
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContainer {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  position: relative;
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.logoImage {
+  width: 65%;
+  height: 65%;
+  border-radius: 20px;
+  object-fit: contain;
+}
+
+.contentNode {
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: absolute;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.nodeIcon {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  background: rgba(237, 109, 143, 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.nodeContent {
+  text-align: left;
+}
+
+.nodeTitle {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.nodeSub {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.node-1 {
+  top: 12%;
+  right: 8%;
+  transform: none;
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.node-2 {
+  bottom: 10%;
+  right: 0%;
+  transform: none;
+  animation: floatDelayed 7s ease-in-out infinite;
+}
+
+.node-3 {
+  top: 16%;
+  left: 8%;
+  transform: none;
+  animation: floatDelayed 8s ease-in-out infinite;
+}
+
+.node-4 {
+  bottom: 10%;
+  left: 8%;
+  transform: none;
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.desktopLines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.mobileLines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+  display: none;
+}
+
+.line {
+  stroke: var(--primary);
+  stroke-width: 2;
+  stroke-dasharray: 8, 8;
+  opacity: 0.9;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes floatDelayed {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+@keyframes scrollMouse {
+  0% {
+    top: 6px;
+    opacity: 1;
+  }
+  100% {
+    top: 24px;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroText {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+  }
+
+  .heroVisual {
+    width: 100%;
+    height: 300px;
+    margin-top: -60px;
+  }
+
+  .heroSection {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 110px;
+    padding-bottom: 140px;
+  }
+
+  .mobileLines {
+    display: block;
+  }
+
+  .desktopLines {
+    display: none;
+  }
+
+  .description {
+    margin-bottom: 28px;
+  }
+
+  .contentNode {
+    padding: 6px 8px;
+    font-size: 0.7rem;
+    width: auto;
+    max-width: 55%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .nodeIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    margin-right: 6px;
+  }
+
+  .node-1 {
+    top: -10px;
+    left: -10px;
+    right: auto;
+    bottom: auto;
+    animation: floatSlow 4s ease-in-out infinite;
+  }
+
+  .node-2 {
+    top: -20px;
+    right: -10px;
+    left: auto;
+    bottom: auto;
+    animation: floatDelayed 5s ease-in-out infinite;
+  }
+
+  .node-3 {
+    bottom: -10px;
+    left: -10px;
+    right: auto;
+    top: auto;
+    animation: floatDelayed 6s ease-in-out infinite;
+  }
+
+  .node-4 {
+    bottom: -10px;
+    right: -10px;
+    left: auto;
+    top: auto;
+    animation: floatSlow 5s ease-in-out infinite;
+  }
+
+  .heroScrollBtn {
+    bottom: 30px;
+  }
+}

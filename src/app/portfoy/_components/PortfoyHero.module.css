@@ -1,0 +1,82 @@
+/* PortfoyHero CSS Modules */
+
+.heroSection {
+  position: relative;
+  padding: 120px 24px 60px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.backgroundGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(237, 109, 143, 0.15), transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid #ed6d8f;
+  background-color: rgba(238, 43, 124, 0.1);
+  color: #ed6d8f;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ed6d8f;
+}
+
+.title {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  margin-bottom: 24px;
+  color: white;
+}
+
+.titleHighlight {
+  color: #ed6d8f;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #d1d5db;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 100px 20px 40px;
+  }
+
+  .backgroundGlow {
+    width: 400px;
+    height: 400px;
+  }
+}

@@ -1,0 +1,228 @@
+/* PortfolioSection CSS Modules */
+
+.portfolioSection {
+  padding: 50px 24px;
+  background: #0a0a12;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.backgroundDecoration {
+  position: absolute;
+  top: 20%;
+  right: 0;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(237, 109, 143, 0.06), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translateX(50%);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.badge {
+  color: #ed6d8f;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.heading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: white;
+  margin-top: 12px;
+}
+
+.description {
+  color: #888;
+  font-size: 16px;
+  max-width: 600px;
+  margin: 16px auto 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.projectCard {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(237, 109, 143, 0.1);
+  display: block;
+  text-decoration: none;
+}
+
+.projectCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(237, 109, 143, 0.15);
+  border-color: rgba(237, 109, 143, 0.4);
+}
+
+.projectCard:hover .projectOverlay {
+  opacity: 0.4;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.projectImage {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.projectOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.9) 100%);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.categoryBadge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 6px 12px;
+  background: rgba(237, 109, 143, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(237, 109, 143, 0.3);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ed6d8f;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 3;
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  z-index: 3;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.descriptionText {
+  font-size: 13px;
+  color: #ed6d8f;
+  line-height: 1.5;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.descriptionTextIcon {
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+.viewAllWrapper {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.viewAllButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #ed6d8f, #c25975);
+  border: none;
+  color: white;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(237, 109, 143, 0.3);
+  transition: all 0.3s ease;
+}
+
+.viewAllButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(237, 109, 143, 0.4);
+}
+
+.viewAllButtonIcon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.viewAllButton:hover .viewAllButtonIcon {
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolioSection {
+    padding: 40px 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .projectCard:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .descriptionText {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,162 @@
+/* ManifestoSection CSS Modules */
+
+.infoWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(45, 26, 34, 1);
+  position: relative;
+  z-index: 1;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.watermarkText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  font-size: 15vw;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.015);
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.manifestoSection {
+  padding: 0 10%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.manifestoText {
+  font-size: clamp(1.1rem, 4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.4;
+  max-width: 1200px;
+  color: #e0e0e0;
+}
+
+.manifestoLogo {
+  display: none;
+}
+
+.highlight {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.manifestoTextWhite {
+  color: #fff;
+}
+
+.connectorLine {
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+  margin: 0 auto;
+  opacity: 0.5;
+}
+
+.visionSection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.visionBox {
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.visionBox:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-color: rgba(237, 109, 143, 0.3);
+  transform: translateY(-5px);
+  background: rgba(237, 109, 143, 0.03);
+}
+
+.visionTitle {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #fff;
+  font-family: var(--font-montserrat), sans-serif;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.visionTitle::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.visionText {
+  font-size: 0.95rem;
+  color: #a0a0a0;
+  line-height: 1.6;
+}
+
+@media (max-width: 1200px) {
+  .infoWrapper {
+    height: auto;
+    padding: 0;
+  }
+
+  .manifestoSection {
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .visionSection {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+    gap: 20px;
+    padding-bottom: 80px;
+  }
+
+  .visionBox {
+    min-height: auto;
+  }
+
+  .manifestoLogo {
+    display: block;
+    width: 100%;
+    max-width: 150px;
+    margin: 30px auto 10px;
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(237, 109, 143, 0.4));
+    border-radius: 15px;
+    transform: rotate(-3deg);
+  }
+}

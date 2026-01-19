@@ -1,0 +1,226 @@
+/* CrmStats CSS Modules */
+
+.section {
+  position: relative;
+  padding: 100px 5%;
+  background: #050505;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.cyberGrid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  align-items: center;
+}
+
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 30px;
+  color: #00ff88;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  width: fit-content;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: clamp(2.2rem, 5vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 30px;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.titleHighlight {
+  -webkit-text-stroke: 1px #00ff88;
+  color: transparent;
+}
+
+.description {
+  font-family: var(--font-space-grotesk), sans-serif;
+  color: #aaa;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 550px;
+}
+
+.divider {
+  height: 1px;
+  width: 100px;
+  background: linear-gradient(90deg, #00ff88, transparent);
+  margin-top: 20px;
+}
+
+.rightContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bentoCard {
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.bentoCard:hover {
+  background: rgba(30, 30, 30, 0.8);
+  border-color: rgba(0, 255, 136, 0.3);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.bentoIconBox {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  background: rgba(0, 255, 136, 0.1);
+  color: #00ff88;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bentoIconBoxPink {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(237, 109, 143, 0.1);
+}
+
+.bentoIconBoxWhite {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bentoIcon {
+  font-size: 32px;
+}
+
+.bentoContent {
+  flex: 1;
+}
+
+.bentoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.bentoTitle {
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.bentoValue {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #00ff88;
+}
+
+.bentoValuePink {
+  color: var(--primary);
+}
+
+.bentoValueWhite {
+  color: #fff;
+}
+
+.bentoBarBg {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.bentoBarFill {
+  height: 100%;
+  background: #00ff88;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.bentoBarFillPink {
+  background: var(--primary);
+  box-shadow: 0 0 10px rgba(237, 109, 143, 0.5);
+}
+
+.bentoBarFillWhite {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.bentoDesc {
+  font-family: var(--font-space-grotesk), sans-serif;
+  color: #888;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bentoCard {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    transform: none !important;
+  }
+
+  .bentoHeader {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .bentoBarBg {
+    margin: 10px auto;
+  }
+}

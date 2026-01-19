@@ -1,0 +1,45 @@
+/* BlogFooter CSS Modules */
+
+.footer {
+  padding: 0 40px;
+  margin-bottom: 80px;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyright {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #333;
+}
+
+.divider {
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #333, transparent);
+}
+
+.scrollText {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer {
+    padding: 0 20px;
+  }
+
+  .divider {
+    width: 100px;
+  }
+}

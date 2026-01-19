@@ -1,0 +1,140 @@
+/* BasiliMedyaHero CSS Modules */
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.badge {
+  color: var(--primary);
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: inline-block;
+  padding: 12px 25px;
+  border: 1px solid rgba(237, 109, 143, 0.3);
+  border-radius: 50px;
+  background: rgba(237, 109, 143, 0.05);
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.title {
+  font-size: clamp(2rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.titleHighlight {
+  background: linear-gradient(90deg, var(--primary), #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #aaa;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 60px auto;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.cmykContainer {
+  margin-top: 40px;
+  position: relative;
+  height: 180px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cmykOrb {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(20px);
+  opacity: 0.7;
+  animation: orbit 6s infinite linear;
+}
+
+.cyan {
+  background: #00aeef;
+  animation-delay: 0s;
+}
+
+.magenta {
+  background: #ec008c;
+  animation-delay: -2s;
+}
+
+.yellow {
+  background: #fff200;
+  animation-delay: -4s;
+}
+
+.designCore {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  animation: floatCore 4s ease-in-out infinite;
+}
+
+.designCoreIcon {
+  font-size: 32px;
+  color: #fff;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translate(40px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(40px) rotate(-360deg);
+  }
+}
+
+@keyframes floatCore {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}

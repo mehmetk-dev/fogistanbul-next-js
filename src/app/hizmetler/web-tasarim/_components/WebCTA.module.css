@@ -1,0 +1,200 @@
+/* WebCTA CSS Modules */
+
+.footerSection {
+  padding: 150px 5%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.browserWrapper {
+  width: 100%;
+  max-width: 800px;
+  background: #0d0d0d;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.browserWrapper:hover {
+  transform: translateY(-10px);
+}
+
+.browserHeader {
+  background: #1a1a1a;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.browserDots {
+  display: flex;
+  gap: 8px;
+  margin-right: 20px;
+}
+
+.browserDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.browserDotRed {
+  background: #ff5f56;
+}
+
+.browserDotYellow {
+  background: #ffbd2e;
+}
+
+.browserDotGreen {
+  background: #27c93f;
+}
+
+.browserAddress {
+  background: #000;
+  color: #555;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.8rem;
+  padding: 8px 20px;
+  border-radius: 20px;
+  flex: 1;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.browserAddress::before {
+  content: '🔒';
+  margin-right: 10px;
+  opacity: 0.5;
+}
+
+.browserBody {
+  padding: 60px 40px;
+  background: #111;
+  text-align: left;
+}
+
+.productLayout {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.productImage {
+  width: 150px;
+  height: 150px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #333;
+  flex-shrink: 0;
+}
+
+.productImageIcon {
+  font-size: 60px;
+  color: var(--primary);
+}
+
+.productInfo {
+  flex: 1;
+}
+
+.rating {
+  color: #f5a623;
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.ratingText {
+  color: #888;
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.productTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.productDesc {
+  color: #888;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.buyBtn {
+  background: #fff;
+  color: #000;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s;
+}
+
+.buyBtn:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .footerSection {
+    padding: 60px 5%;
+  }
+
+  .browserBody {
+    padding: 30px 20px;
+  }
+
+  .productLayout {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .productInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .productTitle {
+    font-size: 1.8rem;
+  }
+
+  .browserAddress {
+    font-size: 0.7rem;
+    padding: 6px 15px;
+  }
+
+  .productImage {
+    margin: 0 auto;
+  }
+
+  .buyBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,110 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #0a0a0a 0%, #12121a 100%);
+}
+
+.content {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.iconWrapper {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  color: #ed6d8f;
+  opacity: 0.8;
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 16px;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.description {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+  .actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.primaryButton {
+  padding: 14px 28px;
+  background: #ed6d8f;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.primaryButton:hover {
+  background: #d85a7a;
+  box-shadow: 0 10px 30px rgba(237, 109, 143, 0.4);
+  transform: translateY(-2px);
+}
+
+.primaryButton:active {
+  transform: translateY(0);
+}
+
+.secondaryButton {
+  padding: 14px 28px;
+  background: transparent;
+  color: #ed6d8f;
+  border: 2px solid #ed6d8f;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.secondaryButton:hover {
+  background: rgba(237, 109, 143, 0.1);
+  box-shadow: 0 10px 30px rgba(237, 109, 143, 0.2);
+}
+
+.info {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.infoText {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+}

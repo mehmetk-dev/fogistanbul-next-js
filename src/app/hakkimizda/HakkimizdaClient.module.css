@@ -1,0 +1,31 @@
+/* HakkimizdaClient CSS Modules */
+
+.aboutPage {
+  background-color: #221018;
+  color: #ffffff;
+  font-family: var(--font-space-grotesk), sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  cursor: default;
+  position: relative;
+}
+
+.aboutPage h1,
+.aboutPage h2,
+.aboutPage h3,
+.aboutPage .posterText {
+  font-family: var(--font-montserrat), sans-serif;
+  text-transform: uppercase;
+}
+
+.pinkGlow {
+  position: fixed;
+  top: -30%;
+  right: -10%;
+  width: 80vw;
+  height: 80vw;
+  background: radial-gradient(circle, rgba(237, 109, 143, 0.15), transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}

@@ -1,0 +1,145 @@
+/* StickyHeroPanel CSS Modules */
+
+.stickyPanel {
+  position: relative;
+  width: 100%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid #ed6d8f;
+  background-color: rgba(238, 43, 124, 0.1);
+  color: #ed6d8f;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ed6d8f;
+}
+
+.title {
+  font-size: clamp(3rem, 11vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 32px;
+}
+
+.titleHighlight {
+  color: #ed6d8f;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-top: 24px;
+  color: #d1d5db;
+  line-height: 1.6;
+  max-width: 500px;
+  margin-bottom: 48px;
+}
+
+.marqueeWrapper {
+  width: calc(100% + 48px);
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-top: 32px;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px 0;
+}
+
+.animateMarquee {
+  animation: marquee 20s linear infinite;
+  display: flex;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+.marqueeText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #d1d5db;
+  margin-right: 32px;
+  letter-spacing: 0.2em;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Desktop Logic (>1024px) */
+@media (min-width: 1024px) {
+  .stickyPanel {
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+  }
+
+  .title {
+    font-size: 5rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    max-width: 100%;
+    margin-top: 24px;
+  }
+
+  .marqueeWrapper {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 32px;
+  }
+}
+
+/* Large Desktop (1400px+) */
+@media (min-width: 1400px) {
+  .stickyPanel {
+    top: 140px;
+  }
+
+  .title {
+    font-size: 6.5rem;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+
+  .description {
+    font-size: 1.25rem;
+    margin-top: 32px;
+  }
+
+  .marqueeWrapper {
+    margin-top: 48px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .description {
+    max-width: 100%;
+  }
+}

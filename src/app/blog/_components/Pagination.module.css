@@ -1,0 +1,54 @@
+/* Pagination CSS Modules */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 80px;
+}
+
+.pageBtn {
+  min-width: 40px;
+  height: 40px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.pageBtn:hover:not(:disabled) {
+  border-color: #ed6d8f;
+  color: #ed6d8f;
+  background: rgba(237, 109, 143, 0.1);
+}
+
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pageBtnActive {
+  background: #ed6d8f;
+  border-color: #ed6d8f;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pagination {
+    margin-top: 60px;
+    gap: 8px;
+  }
+
+  .pageBtn {
+    min-width: 36px;
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}

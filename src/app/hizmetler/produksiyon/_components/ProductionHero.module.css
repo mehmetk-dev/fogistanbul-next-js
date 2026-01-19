@@ -1,0 +1,232 @@
+/* ProductionHero CSS Modules */
+
+.prodHeroSection {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.prodHeroBgDiv {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35) saturate(0.85);
+  display: block;
+}
+
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent 30%, transparent 70%, rgba(10, 10, 10, 1));
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 5px;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.recIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.recDot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: var(--secondary);
+  border-radius: 50%;
+  margin-right: 10px;
+  animation: blink 2s infinite;
+}
+
+.recText {
+  font-family: var(--font-space-grotesk), sans-serif;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.heroTitle {
+  font-size: clamp(1.5rem, 6vw, 6rem);
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.heroSubtitle {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  letter-spacing: 5px;
+  color: #eee;
+  text-transform: uppercase;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.filmScrollWrapper {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+
+.filmScrollWrapper:hover {
+  opacity: 1;
+  transform: translate(-50%, -5px);
+}
+
+.filmStrip {
+  width: 40px;
+  height: 70px;
+  background: #111;
+  border: 2px solid #333;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 0;
+  overflow: hidden;
+}
+
+.filmHole {
+  width: 4px;
+  height: 6px;
+  background: #fff;
+  margin-left: 3px;
+  border-radius: 1px;
+}
+
+.filmHolesRight {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.filmHoleRight {
+  width: 4px;
+  height: 6px;
+  background: #fff;
+  margin-right: 3px;
+  border-radius: 1px;
+}
+
+.filmArrows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: filmScroll 2s linear infinite;
+}
+
+.filmArrowIcon {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.filmArrowIconSecond {
+  font-size: 20px;
+  color: var(--primary);
+  margin-top: -5px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes filmScroll {
+  0% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .prodHeroSection {
+    height: 100vh !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+    width: 100vw !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .prodHeroBgDiv {
+    height: 100vh !important;
+    height: 100dvh !important;
+    width: 100vw !important;
+    position: absolute !important;
+  }
+
+  .prodHeroBgDiv img {
+    transform: scale(1.3) !important;
+  }
+
+  .heroTitle {
+    font-size: 1.8rem !important;
+    letter-spacing: -1px !important;
+  }
+}

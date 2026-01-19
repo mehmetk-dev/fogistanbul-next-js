@@ -1,0 +1,85 @@
+{
+  "name": "FOG İstanbul | Yeni Nesil Dijital Ajans",
+  "short_name": "FOG İstanbul",
+  "description": "İstanbul merkezli dijital pazarlama, sosyal medya yönetimi ve profesyonel video prodüksiyon ajansı.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ed6d8f",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "tr",
+  "dir": "ltr",
+  "categories": ["business", "marketing", "design"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "FOG İstanbul Ana Sayfa"
+    },
+    {
+      "src": "/screenshots/mobile-1.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "FOG İstanbul Mobil Görünüm"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Hizmetler",
+      "short_name": "Hizmetler",
+      "description": "Hizmetlerimizi keşfedin",
+      "url": "/hizmetler",
+      "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "48x48"
+        }
+      ]
+    },
+    {
+      "name": "İletişim",
+      "short_name": "İletişim",
+      "description": "Bizimle iletişime geçin",
+      "url": "/iletisim",
+      "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "48x48"
+        }
+      ]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Blog yazılarımızı okuyun",
+      "url": "/blog",
+      "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "48x48"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}

@@ -1,0 +1,225 @@
+/* AdsPlatforms CSS Modules */
+
+.section {
+  min-height: 100vh;
+  padding: clamp(40px, 5vh, 80px) 5%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.sectionFadeTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to top, transparent, #0a0a0a);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.badgeWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.badgeLine {
+  width: 60px;
+  height: 2px;
+}
+
+.badgeLineLeft {
+  background: linear-gradient(to right, transparent, var(--primary));
+}
+
+.badgeLineRight {
+  background: linear-gradient(to left, transparent, var(--primary));
+}
+
+.badgeText {
+  color: var(--primary);
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.subtitle {
+  color: #666;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1rem;
+}
+
+.platformsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.platformCard {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 24px;
+  padding: 50px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.platformCard:hover {
+  border-color: #444;
+  transform: translateY(-10px);
+}
+
+.glowBg {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.mainIconAbsolute {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  z-index: 5;
+  opacity: 0.8;
+  transition: all 0.4s ease;
+}
+
+.mainIconAbsolute img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.platformCard:hover .mainIconAbsolute {
+  transform: scale(1.1) rotate(5deg);
+  opacity: 1;
+}
+
+.subIcons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+  min-height: 32px;
+}
+
+.subIcons img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  opacity: 0.6;
+  transition: all 0.3s;
+  filter: grayscale(100%);
+}
+
+.platformCard:hover .subIcons img {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+.platformTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #fff;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.platformHead {
+  font-family: var(--font-space-grotesk), sans-serif;
+  color: #888;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.platformDesc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #aaa;
+  max-width: 500px;
+  font-family: var(--font-space-grotesk), sans-serif;
+  margin-bottom: 40px;
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .platformsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .platformCard {
+    padding: 24px !important;
+  }
+
+  .mainIconAbsolute {
+    top: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .platformTitle {
+    font-size: 1.3rem !important;
+    margin-bottom: 5px !important;
+  }
+
+  .platformHead {
+    margin-bottom: 8px !important;
+    font-size: 0.8rem;
+  }
+
+  .platformDesc {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .platformCard {
+    padding: 30px;
+  }
+
+  .platformTitle {
+    font-size: 1.8rem;
+  }
+}

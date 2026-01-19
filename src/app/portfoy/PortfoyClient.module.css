@@ -1,0 +1,7 @@
+/* PortfoyClient CSS Modules */
+
+.portfolioPage {
+  min-height: 100vh;
+  padding-bottom: 0;
+  background-color: #221018;
+}

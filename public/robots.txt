@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://fogistanbul.com
+
+# Sitemaps
+Sitemap: https://fogistanbul.com/sitemap.xml

@@ -1,0 +1,80 @@
+/* PortfoyFilters CSS Modules */
+
+.filtersSection {
+  position: relative;
+  padding: 0 24px 60px;
+  z-index: 50;
+}
+
+.filterScrollContainer {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: rgba(34, 16, 24, 0.8);
+  backdrop-filter: blur(12px);
+  padding: 12px;
+  border-radius: 99px;
+  width: fit-content;
+  margin: 0 auto;
+  border: 1px solid #482333;
+}
+
+.filterBtn {
+  padding: 10px 24px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
+  color: #9ca3af;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.filterBtn:hover {
+  color: white;
+}
+
+.filterBtnActive {
+  background-color: #ed6d8f;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filtersSection {
+    padding: 0 0 40px !important;
+  }
+
+  .filterScrollContainer {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 10px 24px;
+    backdrop-filter: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin: 0;
+  }
+
+  .filterScrollContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filterBtn {
+    background: rgba(34, 16, 24, 0.8);
+    border: 1px solid #482333;
+    flex-shrink: 0;
+  }
+
+  .filterBtnActive {
+    background-color: #ed6d8f;
+    border-color: #ed6d8f;
+  }
+}

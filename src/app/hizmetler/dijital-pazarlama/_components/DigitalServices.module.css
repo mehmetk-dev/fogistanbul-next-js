@@ -1,0 +1,194 @@
+/* DigitalServices CSS Modules */
+
+.section {
+  min-height: 100vh;
+  background: #080808;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 5%;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.title {
+  font-size: clamp(1.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.titleHighlight {
+  color: #4200ff;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #999;
+  line-height: 1.6;
+  font-family: var(--font-space-grotesk), sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.serviceRow {
+  position: relative;
+  padding: 40px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+}
+
+.serviceRow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03), transparent);
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.serviceRow:hover::before {
+  width: 100%;
+}
+
+.serviceRow:hover {
+  padding-left: 40px;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.serviceRow:hover .rowIconBox {
+  transform: scale(1.1) rotate(10deg);
+  opacity: 1;
+}
+
+.serviceRow:hover .rowArrow {
+  transform: translateX(10px);
+  opacity: 1;
+  color: #fff;
+}
+
+.rowContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex: 1;
+}
+
+.rowNum {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: -1px;
+}
+
+.rowTitle {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.descCol {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: flex-end;
+  max-width: 600px;
+}
+
+.rowDesc {
+  margin: 0;
+  color: #888;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.rowIconBox {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: all 0.4s ease;
+}
+
+.rowIcon {
+  font-size: 28px;
+}
+
+.rowArrow {
+  color: #555;
+  font-size: 24px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 900px) {
+  .rowContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .descCol {
+    flex-direction: column-reverse;
+    max-width: 100%;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .rowArrow {
+    display: none;
+  }
+
+  .rowIconBox {
+    width: 80px;
+    height: 80px;
+    transform: scale(1.1);
+  }
+}

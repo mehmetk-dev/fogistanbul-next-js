@@ -1,0 +1,172 @@
+/* BasiliMedyaProcess CSS Modules */
+
+.section {
+  padding: 100px 5%;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #fff;
+  margin-bottom: 15px;
+  font-weight: 800;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.description {
+  color: #666;
+  font-size: 1.1rem;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.processStepRow {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 30px;
+  position: relative;
+  padding: 20px 0;
+}
+
+.processCenterLine {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.processCenterDot {
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(237, 109, 143, 0.5);
+}
+
+.processContent {
+  position: relative;
+  padding-top: 10px;
+}
+
+.processContentLeft {
+  text-align: right;
+}
+
+.processContentRight {
+  text-align: left;
+}
+
+.processBgNum {
+  position: absolute;
+  top: -20px;
+  font-size: 5rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.03);
+  font-family: var(--font-montserrat), sans-serif;
+  z-index: 0;
+  line-height: 1;
+}
+
+.processContentLeft .processBgNum {
+  right: -10px;
+}
+
+.processContentRight .processBgNum {
+  left: -10px;
+}
+
+.stepTitle {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.stepDesc {
+  color: #aaa;
+  line-height: 1.6;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+@media (max-width: 900px) {
+  .processStepRow {
+    grid-template-columns: 40px 1fr;
+    gap: 20px;
+  }
+
+  .processCenterLine {
+    grid-column: 1;
+    width: 1px;
+    margin: 0 auto;
+  }
+
+  .processStepRow > div:first-child {
+    display: none;
+  }
+
+  .processContentLeft {
+    text-align: left;
+    grid-column: 2;
+  }
+
+  .processContentRight {
+    grid-column: 2;
+  }
+
+  .processBgNum {
+    left: 0;
+    right: auto;
+    font-size: 4rem;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .processStepRow {
+    display: block !important;
+    padding-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 10px;
+    margin-bottom: 30px;
+  }
+
+  .processStepRow > div {
+    display: none;
+  }
+
+  .processStepRow > .processContent {
+    display: block !important;
+  }
+
+  .processContentLeft,
+  .processContentRight {
+    text-align: left;
+    grid-column: auto;
+    padding-left: 15px;
+  }
+
+  .processBgNum {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: auto;
+    font-size: 3rem;
+    margin-bottom: 5px;
+    color: var(--primary);
+    opacity: 1;
+  }
+}

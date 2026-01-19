@@ -1,0 +1,238 @@
+/* CrmWorkflow CSS Modules */
+
+.section {
+  padding: 150px 5%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(to bottom, transparent 0%, #050505 30%, #050505 100%);
+  overflow: hidden;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin-bottom: 60px;
+  font-weight: 800;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.headingHighlight {
+  color: #00ff88;
+}
+
+.pipelineContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  padding: 40px 0;
+}
+
+.pipelineLine {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  right: 60px;
+  height: 4px;
+  background: #333;
+  z-index: 0;
+  transform: translateY(-50%);
+}
+
+.pipelineFlowPacket {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  animation: flowAnim 3s infinite linear;
+  opacity: 0.8;
+}
+
+.stageNode {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stageNode:hover {
+  transform: translateY(-10px) scale(1.1);
+}
+
+.nodeIcon {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+  background: #111;
+  border: 2px solid #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s;
+  position: relative;
+  z-index: 2;
+}
+
+.statusLead {
+  color: #fff;
+}
+
+.statusProcess {
+  color: #00ff88;
+}
+
+.statusOffer {
+  color: #ffff00;
+}
+
+.statusWon {
+  color: #00ff88;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+  border-color: #00ff88;
+  background: #00ff88;
+  color: #000;
+  font-weight: 700;
+}
+
+.stageNode:hover .nodeIcon {
+  border-color: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.nodeIconInner {
+  font-size: 32px;
+}
+
+.nodeText {
+  /* Node text container */
+}
+
+.nodeLabel {
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #fff;
+  white-space: nowrap;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.nodeSub {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.8rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+.startBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  color: #000;
+  padding: 18px 50px;
+  border-radius: 50px;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-top: 60px;
+}
+
+.startBtn:hover {
+  background: #00ff88;
+  transform: scale(1.05);
+}
+
+.startBtnIcon {
+  font-size: 20px;
+}
+
+@keyframes flowAnim {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes flowAnimVertical {
+  0% {
+    top: -20%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .pipelineContainer {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+    padding-left: 10px;
+  }
+
+  .pipelineLine {
+    width: 4px;
+    top: 40px;
+    height: calc(100% - 80px);
+    left: 50px;
+    right: auto;
+    transform: translateX(-50%);
+    overflow: hidden;
+  }
+
+  .pipelineFlowPacket {
+    width: 100%;
+    height: 100px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, transparent, #00ff88, transparent);
+    animation: flowAnimVertical 2s infinite linear;
+  }
+
+  .stageNode {
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items: center;
+  }
+
+  .nodeIcon {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+
+  .nodeLabel {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "fogistanbul-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "browserslist": {
+    "production": [
+      "chrome >= 90",
+      "firefox >= 88",
+      "safari >= 14",
+      "edge >= 90"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@tryghost/content-api": "^1.12.3",
+    "next": "16.1.2",
+    "next-sitemap": "^4.2.3",
+    "ogl": "^1.0.11",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.15.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.2",
+    "lighthouse": "^13.0.1",
+    "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "@sentry/nextjs": "^10.34.0"
+  }
+}

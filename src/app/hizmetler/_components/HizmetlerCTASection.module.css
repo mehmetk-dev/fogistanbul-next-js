@@ -1,0 +1,137 @@
+/* HizmetlerCTASection CSS Modules */
+
+.ctaSection {
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundGlow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: #ed6d8f;
+  filter: blur(150px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border-radius: 32px;
+  border: 1px solid rgba(72, 35, 51, 1);
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+.decorativeElement1 {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: #ed6d8f;
+  filter: blur(120px);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.decorativeElement2 {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: #4200ff;
+  filter: blur(120px);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  color: white;
+  margin-bottom: 24px;
+  line-height: 1.1;
+  position: relative;
+  z-index: 2;
+  letter-spacing: -0.02em;
+}
+
+.titleHighlight {
+  color: #ed6d8f;
+  text-shadow: 0 0 40px rgba(237, 109, 143, 0.6);
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  max-width: 600px;
+  margin: 0 auto 48px auto;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+.desktopBr {
+  display: inline;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 64px;
+  background: white;
+  color: black;
+  border-radius: 99px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.ctaButton:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 20px 50px rgba(255, 255, 255, 0.2);
+  padding: 24px 72px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ctaSection {
+    padding: 80px 20px;
+  }
+
+  .content {
+    padding: 60px 20px;
+  }
+
+  .buttonsWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .desktopBr {
+    display: none;
+  }
+}

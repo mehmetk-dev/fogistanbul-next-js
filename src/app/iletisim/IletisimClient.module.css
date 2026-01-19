@@ -1,0 +1,99 @@
+/* IletisimClient CSS Modules */
+
+.main {
+  min-height: 100vh;
+  background: #0a0a0a;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Fog & Atmosphere */
+.fogBg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, #2a101a, #080406 70%);
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.spotlightFix {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(237, 109, 143, 0.12), transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.fogLayer {
+  position: absolute;
+  inset: -50%;
+  background-image: url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/img/fog1.png');
+  background-size: cover;
+  opacity: 0.08;
+  animation: drift 60s linear infinite;
+}
+
+.fogLayer1 {
+  /* Layer 1 - default animation */
+}
+
+.fogLayer2 {
+  animation-direction: reverse;
+  animation-duration: 40s;
+  opacity: 0.04;
+}
+
+.noiseOverlay {
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIwLjAzIi8+PC9zdmc+');
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+}
+
+@keyframes drift {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Layout */
+.contentContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 120px 24px 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.surrealLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+@media (max-width: 1366px) {
+  .surrealLayout {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contentContainer {
+    padding: 0;
+  }
+
+  .surrealLayout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

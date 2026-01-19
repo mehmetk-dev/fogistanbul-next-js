@@ -1,0 +1,6 @@
+/* BlogClient CSS Modules */
+
+.blogPage {
+  position: relative;
+  z-index: 1;
+}

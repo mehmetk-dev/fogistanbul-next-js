@@ -1,0 +1,229 @@
+/* SocialApproach CSS Modules */
+
+.approachSection {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 100px 5%;
+  min-height: 100vh;
+}
+
+.backgroundGlow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(237, 109, 143, 0.08), transparent 70%);
+  transform: translate(-30%, -50%);
+  filter: blur(60px);
+  z-index: -1;
+}
+
+.rotatingRing {
+  position: absolute;
+  right: -200px;
+  bottom: -200px;
+  width: 800px;
+  height: 800px;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  animation: spin 30s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.approachGrid {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.leftColumn {
+  position: relative;
+}
+
+.badgeWrapper {
+  margin-bottom: 40px;
+}
+
+.badge {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.heading {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 25px;
+  font-family: var(--font-montserrat), sans-serif;
+  letter-spacing: -1px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.headingHighlight {
+  color: var(--primary);
+}
+
+.divider {
+  width: 120px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #ccc;
+  line-height: 1.6;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.descriptionSecondary {
+  font-size: 1.1rem;
+  color: #999;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  height: 100%;
+}
+
+.approachBox {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  transition: all 0.4s ease;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.approachBox:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.approachBox:hover .boxGlow {
+  opacity: 1;
+}
+
+.boxGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.boxGlowPink {
+  background: radial-gradient(circle at top left, rgba(237, 109, 143, 0.15), transparent 60%);
+}
+
+.boxGlowBlue {
+  background: radial-gradient(circle at top left, rgba(24, 119, 242, 0.1), transparent 50%);
+}
+
+.logosContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-shrink: 0;
+  width: 60px;
+  align-items: center;
+  z-index: 2;
+}
+
+.logosRow {
+  display: flex;
+  gap: 8px;
+}
+
+.logoImg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.approachContent {
+  z-index: 2;
+}
+
+.approachTitle {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.approachDesc {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1024px) {
+  .approachSection {
+    padding: 60px 5%;
+    min-height: auto;
+  }
+
+  .approachGrid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .approachBox {
+    padding: 30px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .approachContent {
+    align-items: center;
+  }
+
+  .rotatingRing {
+    display: none;
+  }
+
+  .boxGlow {
+    display: none;
+  }
+}

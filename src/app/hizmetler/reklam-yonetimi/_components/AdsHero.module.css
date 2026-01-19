@@ -1,0 +1,188 @@
+/* AdsHero CSS Modules */
+
+.section {
+  min-height: 100vh;
+  padding: 100px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.targetCircle {
+  width: 60vmin;
+  height: 60vmin;
+  border: 3px solid rgba(237, 109, 143, 0.4);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulseTarget 3s infinite;
+  box-shadow: 0 0 60px rgba(237, 109, 143, 0.1);
+}
+
+.targetCircle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vmin;
+  height: 40vmin;
+  border: 2px solid rgba(237, 109, 143, 0.25);
+  border-radius: 50%;
+}
+
+.targetCircle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20vmin;
+  height: 20vmin;
+  border: 2px solid rgba(237, 109, 143, 0.15);
+  border-radius: 50%;
+}
+
+.crosshairVertical {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(237, 109, 143, 0.3);
+}
+
+.crosshairHorizontal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(237, 109, 143, 0.3);
+}
+
+.content {
+  z-index: 2;
+}
+
+.badge {
+  color: var(--primary);
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.3rem;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: clamp(2rem, 9vmin, 6rem);
+  font-weight: 800;
+  line-height: 0.9;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.titleHighlight {
+  color: var(--primary);
+}
+
+.description {
+  max-width: 600px;
+  margin: 20px auto;
+  color: #777;
+  font-size: 1.2rem;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.scrollButton {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(237, 109, 143, 0.1);
+  border: 2px solid rgba(237, 109, 143, 0.3);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.scrollButton:hover {
+  background: rgba(237, 109, 143, 0.2);
+  border-color: rgba(237, 109, 143, 0.5);
+}
+
+.scrollButtonIcon {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.scrollButtonIconSecond {
+  font-size: 1rem;
+  color: #fff;
+  animation: bounce 2s infinite;
+}
+
+.sectionFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, #0a0a0a);
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes pulseTarget {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.6;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(6px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 768px) {
+  .targetCircle {
+    width: 80vmin;
+    height: 80vmin;
+  }
+
+  .targetCircle::before {
+    width: 60vmin;
+    height: 60vmin;
+  }
+
+  .targetCircle::after {
+    width: 40vmin;
+    height: 40vmin;
+  }
+}

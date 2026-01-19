@@ -1,0 +1,47 @@
+/* AdsBudget CSS Modules */
+
+.section {
+  padding: 60px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #0a0a0a;
+}
+
+.card {
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.icon {
+  font-size: 32px;
+  color: #00ff88;
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 10px;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.description {
+  color: #aaa;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.description strong {
+  color: #fff;
+  font-weight: 700;
+}

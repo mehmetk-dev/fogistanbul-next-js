@@ -1,0 +1,11 @@
+/* IcerikPazarlamaClient CSS Modules */
+
+.contentPage {
+  background: #221018;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-montserrat), sans-serif;
+  width: 100%;
+  max-width: 100vw;
+}
