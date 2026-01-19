@@ -25,8 +25,18 @@ export default function PWAInstallPrompt() {
   const { showInfo } = useToast();
 
   useEffect(() => {
+    // Check if user already dismissed in this session
+    const isDismissed = sessionStorage.getItem('pwa-install-dismissed') === 'true';
+    
     // Listen for beforeinstallprompt event
     const handleBeforeInstallPrompt = (e: Event) => {
+      // Only prevent default and show custom UI if not already dismissed
+      // This avoids the browser warning when we don't intend to show our prompt
+      if (isDismissed) {
+        // Let the browser handle it naturally (no custom UI)
+        return;
+      }
+      
       // Prevent the default browser install prompt
       e.preventDefault();
       

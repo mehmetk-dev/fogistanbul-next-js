@@ -116,8 +116,8 @@ const nextConfig: NextConfig = {
       'next/script',
       '@tryghost/content-api',
     ],
-    // CSS optimization - reduce chunk sizes and improve loading
-    optimizeCss: true,
+    // Disable CSS preloading to prevent browser warnings
+    cssChunking: 'strict',
   },
   
   // Note: swcMinify is enabled by default in Next.js 16
@@ -126,15 +126,6 @@ const nextConfig: NextConfig = {
   
   // Output optimization
   output: 'standalone',
-  
-  // Turbopack config (Next.js 16 default - faster than webpack)
-  // CSS chunk optimization is handled automatically by Turbopack
-  turbopack: {
-    // Optimize CSS chunking
-    resolveAlias: {},
-    // Set root directory to prevent lockfile warning
-    root: process.cwd(),
-  },
   
   // Remove console.log in production builds
   compiler: {
