@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  fogistanbul-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Build-time environment variables (NEXT_PUBLIC_* are embedded at build time)
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://fogistanbul.com}
+        NEXT_PUBLIC_GHOST_URL: ${NEXT_PUBLIC_GHOST_URL:-https://blog.fogistanbul.com}
+        NEXT_PUBLIC_GHOST_CONTENT_KEY: ${NEXT_PUBLIC_GHOST_CONTENT_KEY}
+        NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID:-}
+        NEXT_PUBLIC_SENTRY_DSN: ${NEXT_PUBLIC_SENTRY_DSN:-}
+    container_name: fogistanbul-nextjs
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      # Runtime environment variables
+      - NODE_ENV=production
+      - EMAILJS_SERVICE_ID=${EMAILJS_SERVICE_ID}
+      - EMAILJS_TEMPLATE_ID=${EMAILJS_TEMPLATE_ID}
+      - EMAILJS_PUBLIC_KEY=${EMAILJS_PUBLIC_KEY}
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Resource limits (optional, adjust as needed)
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    networks:
+      - fogistanbul-network
+
+  tunnel:
+    image: cloudflare/cloudflared
+    container_name: cloudflare-tunnel
+    restart: always
+    command: tunnel run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - fogistanbul-web
+    networks:
+      - fogistanbul-network
+
+networks:
+  fogistanbul-network:
+    driver: bridge

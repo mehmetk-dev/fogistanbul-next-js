@@ -13,13 +13,14 @@ import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import "./globals.css";
 
 // Fonts - Optimized: Only load fonts we actually use
-// Reduced font weights for better performance (only used weights: 400, 500, 600, 700, 800, 900)
+// preload: false to prevent "preloaded but not used" warnings
+// Next.js will still optimize and load fonts efficiently
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800", "900"],
-  preload: true,
+  preload: false,
   fallback: ["system-ui", "arial"],
 });
 
@@ -28,7 +29,7 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
-  preload: true,
+  preload: false,
   fallback: ["system-ui", "sans-serif"],
 });
 

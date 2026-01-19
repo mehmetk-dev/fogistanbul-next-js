@@ -1,0 +1,57 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Next.js build output
+.next
+out
+build
+
+# Testing
+coverage
+
+# Environment files (will be passed via docker-compose)
+.env
+.env.*
+!.env.example
+
+# IDE and editor
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.docker
+
+# Documentation
+*.md
+!README.md
+
+# Misc
+.vercel
+.turbo
+*.tsbuildinfo
+next-env.d.ts
+
+# Cursor/Editor configs
+.cursor
+.cursorrules
+
+# Logs
+logs
+*.log

@@ -99,16 +99,11 @@ function validateEnv(): EnvConfig {
     const emailTemplateId = process.env.EMAILJS_TEMPLATE_ID;
     const emailPublicKey = process.env.EMAILJS_PUBLIC_KEY;
 
-    // EmailJS config - warn if missing but don't fail (might be hardcoded)
-    if (!emailServiceId || !emailTemplateId || !emailPublicKey) {
-        if (process.env.NODE_ENV === 'production') {
-            console.warn('⚠️  EmailJS environment variables not set. Contact form may not work.');
-        }
-    } else {
-        config.EMAILJS_SERVICE_ID = emailServiceId;
-        config.EMAILJS_TEMPLATE_ID = emailTemplateId;
-        config.EMAILJS_PUBLIC_KEY = emailPublicKey;
-    }
+    // EmailJS config - silently use values if available
+    // Note: Hardcoded fallbacks exist in iletisimData.ts, so no warning needed
+    if (emailServiceId) config.EMAILJS_SERVICE_ID = emailServiceId;
+    if (emailTemplateId) config.EMAILJS_TEMPLATE_ID = emailTemplateId;
+    if (emailPublicKey) config.EMAILJS_PUBLIC_KEY = emailPublicKey;
 
     // Validate URL formats
     if (config.NEXT_PUBLIC_SITE_URL) {
