@@ -97,7 +97,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="tr" data-scroll-behavior="smooth" className={`${montserrat.variable} ${spaceGrotesk.variable}`}>
+      <html 
+        lang="tr" 
+        data-scroll-behavior="smooth" 
+        className={montserrat.className}
+        style={{ fontFamily: 'var(--font-montserrat), var(--font-space-grotesk), system-ui, sans-serif' }}
+      >
       <head>
         {/* Preconnect for Google Fonts - Optimized order */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
