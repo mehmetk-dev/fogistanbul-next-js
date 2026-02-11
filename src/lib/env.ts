@@ -34,7 +34,7 @@ type EnvConfig = {
 const DEVELOPMENT_DEFAULTS: Partial<EnvConfig> = {
     NEXT_PUBLIC_SITE_URL: 'http://localhost:3000',
     NEXT_PUBLIC_GHOST_URL: 'https://blog.fogistanbul.com',
-    NEXT_PUBLIC_GHOST_CONTENT_KEY: 'development-key-placeholder',
+    NEXT_PUBLIC_GHOST_CONTENT_KEY: '0000000000000000000000000000', // 28 hex chars for valid Ghost API key format
 };
 
 /**
