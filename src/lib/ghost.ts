@@ -14,24 +14,34 @@ const ghostApiUrl = env.GHOST_INTERNAL_URL || env.NEXT_PUBLIC_GHOST_URL;
 const ghostPublicUrl = env.NEXT_PUBLIC_GHOST_URL;
 
 // Ghost API singleton instance
-// Uses internal URL for API calls (Docker network)
-// Initialize with a try-catch to handle invalid development keys
+// Lazy initialization to avoid validation errors at module load time
 let api: GhostContentAPI | null = null;
+let apiInitialized = false;
 
-try {
-    api = new GhostContentAPI({
-        url: ghostApiUrl,
-        key: env.NEXT_PUBLIC_GHOST_CONTENT_KEY,
-        version: 'v5.0'
-    });
-} catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-        console.warn(
-            '[Ghost] API initialization failed with current key. ' +
-            'Please set NEXT_PUBLIC_GHOST_CONTENT_KEY to a valid 26+ character hex key.\n' +
-            'Error:', error instanceof Error ? error.message : error
-        );
+function getGhostAPI(): GhostContentAPI | null {
+    if (apiInitialized) {
+        return api;
     }
+    
+    apiInitialized = true;
+    
+    try {
+        api = new GhostContentAPI({
+            url: ghostApiUrl,
+            key: env.NEXT_PUBLIC_GHOST_CONTENT_KEY,
+            version: 'v5.0'
+        });
+    } catch (error) {
+        if (process.env.NODE_ENV === 'development') {
+            console.warn(
+                '[Ghost] API initialization failed with current key. ' +
+                'Please set NEXT_PUBLIC_GHOST_CONTENT_KEY to a valid 26+ character hex key.\n' +
+                'Error:', error instanceof Error ? error.message : error
+            );
+        }
+    }
+    
+    return api;
 }
 
 /**
@@ -103,12 +113,13 @@ function normalizePostUrls(post: GhostPost): GhostPost {
  * Sitemap ve diğer kritik yerlerde kullanılır
  */
 export async function getAllPostsNoCache(): Promise<GhostPost[]> {
-    if (!api) {
+    const ghostApi = getGhostAPI();
+    if (!ghostApi) {
         console.error('[Ghost] API not initialized. Please configure NEXT_PUBLIC_GHOST_CONTENT_KEY.');
         return [];
     }
     try {
-        const posts = await api.posts.browse({
+        const posts = await ghostApi.posts.browse({
             include: ['tags', 'authors'],
             limit: 'all',
             order: 'published_at DESC',
@@ -127,12 +138,13 @@ export async function getAllPostsNoCache(): Promise<GhostPost[]> {
 export async function getAllPosts(): Promise<GhostPost[]> {
     return unstable_cache(
         async () => {
-            if (!api) {
+            const ghostApi = getGhostAPI();
+            if (!ghostApi) {
                 console.error('[Ghost] API not initialized. Please configure NEXT_PUBLIC_GHOST_CONTENT_KEY.');
                 return [];
             }
             try {
-                const posts = await api.posts.browse({
+                const posts = await ghostApi.posts.browse({
                     include: ['tags', 'authors'],
                     limit: 'all',
                     order: 'published_at DESC',
@@ -162,12 +174,13 @@ export const revalidate = 60; // Revalidate every 60 seconds
 export async function getPostBySlug(slug: string): Promise<GhostPost | null> {
     return unstable_cache(
         async () => {
-            if (!api) {
+            const ghostApi = getGhostAPI();
+            if (!ghostApi) {
                 console.error('[Ghost] API not initialized. Please configure NEXT_PUBLIC_GHOST_CONTENT_KEY.');
                 return null;
             }
             try {
-                const post = await api.posts.read(
+                const post = await ghostApi.posts.read(
                     { slug },
                     { include: ['tags', 'authors'] }
                 );
@@ -196,7 +209,8 @@ export async function getRelatedPosts(
     currentPostId: string,
     limit: number = 3
 ): Promise<GhostPost[]> {
-    if (!api) {
+    const ghostApi = getGhostAPI();
+    if (!ghostApi) {
         console.error('[Ghost] API not initialized. Please configure NEXT_PUBLIC_GHOST_CONTENT_KEY.');
         return [];
     }
@@ -207,7 +221,7 @@ export async function getRelatedPosts(
 
     try {
         const tagSlugs = tags.map((tag) => tag.slug).join(',');
-        const posts = (await api.posts.browse({
+        const posts = (await ghostApi.posts.browse({
             include: ['tags', 'authors'],
             filter: `tag:[${tagSlugs}]+id:-${currentPostId}`,
             limit,
@@ -241,7 +255,8 @@ async function getRecentPosts(
     excludeId?: string,
     excludeIds: string[] = []
 ): Promise<GhostPost[]> {
-    if (!api) {
+    const ghostApi = getGhostAPI();
+    if (!ghostApi) {
         console.error('[Ghost] API not initialized. Please configure NEXT_PUBLIC_GHOST_CONTENT_KEY.');
         return [];
     }
@@ -249,7 +264,7 @@ async function getRecentPosts(
         const allExcluded = excludeId ? [excludeId, ...excludeIds] : excludeIds;
         const filterIds = allExcluded.join(',');
 
-        const posts = await api.posts.browse({
+        const posts = await ghostApi.posts.browse({
             include: ['tags', 'authors'],
             filter: filterIds ? `id:-[${filterIds}]` : undefined,
             limit,
@@ -299,7 +314,8 @@ export async function getPaginatedPosts(
 ): Promise<PaginatedPostsResponse> {
     return unstable_cache(
         async () => {
-            if (!api) {
+            const ghostApi = getGhostAPI();
+            if (!ghostApi) {
                 console.error('[Ghost] API not initialized. Please configure NEXT_PUBLIC_GHOST_CONTENT_KEY.');
                 return {
                     posts: [],
@@ -316,7 +332,7 @@ export async function getPaginatedPosts(
             try {
                 const filter = tagSlug ? `tag:${tagSlug}` : undefined;
                 
-                const response = await api.posts.browse({
+                const response = await ghostApi.posts.browse({
                     include: ['tags', 'authors'],
                     limit,
                     page,
@@ -362,26 +378,6 @@ export async function getPaginatedPosts(
         }
     )();
 }
-                return {
-                    posts: [],
-                    pagination: {
-                        page: 1,
-                        limit,
-                        pages: 0,
-                        total: 0,
-                        next: null,
-                        prev: null,
-                    },
-                };
-            }
-        },
-        [`paginated-posts-${page}-${limit}-${tagSlug || 'all'}`],
-        {
-            revalidate: 60,
-            tags: ['posts'],
-        }
-    )();
-}
 
 /**
  * Tüm tag'leri getir
@@ -390,12 +386,13 @@ export async function getPaginatedPosts(
 export async function getAllTags(): Promise<GhostTag[]> {
     return unstable_cache(
         async () => {
-            if (!api) {
+            const ghostApi = getGhostAPI();
+            if (!ghostApi) {
                 console.error('[Ghost] API not initialized. Please configure NEXT_PUBLIC_GHOST_CONTENT_KEY.');
                 return [];
             }
             try {
-                const tags = await api.tags.browse({
+                const tags = await ghostApi.tags.browse({
                     limit: 'all',
                     filter: 'visibility:public',
                 });
