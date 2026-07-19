@@ -11,8 +11,8 @@
 type EnvSchema = {
     // Public (Client-side) Environment Variables
     NEXT_PUBLIC_SITE_URL: string;
-    NEXT_PUBLIC_GHOST_URL: string; // Public URL for images/browser (https://blog.fogistanbul.com)
-    NEXT_PUBLIC_GHOST_CONTENT_KEY: string;
+    NEXT_PUBLIC_GHOST_URL?: string; // Public URL for images/browser (https://blog.fogistanbul.com) - only needed for blog
+    NEXT_PUBLIC_GHOST_CONTENT_KEY?: string; // Only needed for blog
     NEXT_PUBLIC_GA_ID?: string; // Google Analytics ID (optional)
     NEXT_PUBLIC_SENTRY_DSN?: string; // Sentry DSN (optional)
     
@@ -56,12 +56,25 @@ function validateEnv(): EnvConfig {
     const isProduction = process.env.NODE_ENV === 'production';
     const isClientSide = typeof window !== 'undefined';
 
-    // Required Public Variables
+    // Required Public Variables (Ghost vars are optional - validated lazily in ghost.ts)
     const requiredPublicVars: (keyof EnvSchema)[] = [
         'NEXT_PUBLIC_SITE_URL',
+    ];
+
+    // Optional Ghost variables - read if present, no error if missing
+    const optionalGhostVars: (keyof EnvSchema)[] = [
         'NEXT_PUBLIC_GHOST_URL',
         'NEXT_PUBLIC_GHOST_CONTENT_KEY',
     ];
+
+    for (const key of optionalGhostVars) {
+        const value = process.env[key];
+        if (value && value.trim() !== '') {
+            config[key] = value;
+        } else if (DEVELOPMENT_DEFAULTS[key]) {
+            config[key] = DEVELOPMENT_DEFAULTS[key] as string;
+        }
+    }
 
     // Check required variables
     for (const key of requiredPublicVars) {

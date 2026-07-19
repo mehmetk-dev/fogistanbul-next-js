@@ -105,13 +105,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
-      url: `${siteUrl}/kullanim-sartlari`,
+      url: `${siteUrl}/kvkk`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${siteUrl}/kvkk`,
+      url: `${siteUrl}/cerez-politikasi`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,

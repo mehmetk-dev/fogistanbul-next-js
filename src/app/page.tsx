@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import HomeClient from './HomeClient';
 
 export const metadata: Metadata = {
-    title: 'FOG İstanbul | Yeni Nesil Dijital Ajans',
+    title: 'Yeni Nesil Dijital Ajans',
     description: 'İstanbul merkezli dijital pazarlama, sosyal medya yönetimi ve profesyonel video prodüksiyon ajansı. Markanızı dijital dünyada büyütüyoruz.',
     keywords: ['dijital ajans', 'sosyal medya yönetimi', 'web tasarım', 'SEO', 'dijital pazarlama', 'prodüksiyon', 'istanbul', 'dijital strateji'],
     openGraph: {

@@ -7,7 +7,7 @@ import ErrorBoundaryWrapper from "@/components/ErrorBoundaryWrapper";
 import { ToastProvider } from "@/components/Toast";
 import Analytics from "@/components/Analytics";
 import MonitoringInit from "@/components/MonitoringInit";
-import MaterialSymbolsLoader from "@/components/MaterialSymbolsLoader";
+
 import PWARegister from "@/components/PWARegister";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import "./globals.css";
@@ -102,7 +102,18 @@ export default function RootLayout({
         {/* Preconnect for Google Fonts - Optimized order */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Material Symbols will be loaded lazily via MaterialSymbolsLoader component */}
+        {/* Material Symbols - display=block hides icon text until font loads (prevents FOUT) */}
+        <link
+          rel="preload"
+          href="https://fonts.gstatic.com/s/materialsymbolsoutlined/v260/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block"
+        />
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ed6d8f" />
@@ -115,7 +126,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased selection:bg-primary selection:text-white">
         <PWARegister />
-        <MaterialSymbolsLoader />
+
         <MonitoringInit />
         <Analytics />
         <ToastProvider>

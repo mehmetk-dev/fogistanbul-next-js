@@ -109,7 +109,9 @@ export default function SocialHero() {
                     {/* Scroll Indicator */}
                     <div className={styles.unifiedScrollIndicator} onClick={handleScroll}>
                         <div className={styles.socialScrollRing}>
-                            <span className={`material-symbols-outlined ${styles.socialScrollRingInner}`}>swipe_vertical</span>
+                            <div className={styles.socialScrollRingInner}>
+                                <span className={`material-symbols-outlined ${styles.scrollIndicatorIcon}`} aria-hidden="true">swipe_vertical</span>
+                            </div>
                         </div>
                         <span className={styles.scrollHint}>KEŞFET</span>
                     </div>

@@ -163,12 +163,19 @@
 
 .footerBottomLinks {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 20px;
 }
 
 .footerBottomLink {
   color: #aaa;
   text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footerBottomLink:hover {
+  color: #ed6d8f;
 }
 
 /* Responsive */
@@ -237,5 +244,9 @@
     gap: 20px;
     margin-top: 40px;
     text-align: center;
+  }
+
+  .footerBottomLinks {
+    justify-content: center;
   }
 }

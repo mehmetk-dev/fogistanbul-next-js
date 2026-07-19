@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import DijitalPazarlamaClient from './DijitalPazarlamaClient';
 
 export const metadata: Metadata = {
-    title: 'Dijital Pazarlama ve Performans | FOG İstanbul',
+    title: 'Dijital Pazarlama ve Performans',
     description: 'Google Ads, Sosyal Medya Reklamları, SEO ve Veri Analizi hizmetlerimizle markanızın cirosunu artırın. FOG İstanbul ile dijital ekosisteminizi kurun.',
     keywords: ['dijital pazarlama', 'google ads', 'sosyal medya reklamları', 'performans pazarlama', 'roi', 'conversion optimization', 'veri analizi', 'marketing automation'],
     openGraph: {

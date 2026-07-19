@@ -1,35 +1,82 @@
-/* ContentHero CSS Modules */
+/* ContentHero CSS Modules - Floating Keywords Design */
 
 .heroSection {
   position: relative;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 5% 60px;
+  overflow: hidden;
+}
+
+/* Background Glows */
+.bgGlow {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(237, 109, 143, 0.12), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgGlow2 {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(100, 149, 237, 0.08), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Content Grid */
+.heroContent {
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 120px 5% 60px;
   max-width: 1400px;
-  margin: 0 auto;
-  gap: 50px;
+  width: 100%;
+  gap: 60px;
+  z-index: 2;
 }
 
+/* Text Side */
 .heroText {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  z-index: 5;
+}
+
+.tagline {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-weight: 600;
+  opacity: 0;
+  animation: slideUpFade 0.6s ease 0.1s forwards;
 }
 
 .title {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: clamp(2rem, 6vw, 5rem);
+  font-size: clamp(2rem, 5vw, 4.5rem);
   line-height: 1.1;
   font-weight: 800;
   margin-bottom: 25px;
   color: #fff;
-  animation: slideUpFade 0.8s ease 0.2s forwards;
   opacity: 0;
+  animation: slideUpFade 0.8s ease 0.2s forwards;
 }
 
 .textGradient {
@@ -41,15 +88,201 @@
 
 .description {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 1.2rem;
-  color: #aaa;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  color: #999;
+  line-height: 1.7;
   margin-bottom: 40px;
-  max-width: 550px;
+  max-width: 520px;
+  opacity: 0;
   animation: slideUpFade 0.8s ease 0.4s forwards;
+}
+
+/* Visual Side - Floating Keywords */
+.keywordsVisual {
+  flex: 1;
+  position: relative;
+  height: 500px;
+  max-width: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rings container - holds gradient rings and center element */
+.ringsWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  height: 320px;
+}
+
+/* Tags container - on desktop tags are absolute, on mobile they wrap */
+.tagsWrap {
+  position: absolute;
+  inset: 0;
+}
+
+/* Gradient Rings */
+.gradientRing {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 1px solid rgba(237, 109, 143, 0.15);
+  animation: rotateRing 20s linear infinite;
+}
+
+.gradientRingInner {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px dashed rgba(237, 109, 143, 0.1);
+  animation: rotateRing 15s linear infinite reverse;
+}
+
+/* Center Element */
+.centerElement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+  opacity: 0;
+  animation: scaleIn 0.6s ease 0.5s forwards;
+}
+
+.centerLabel {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
+
+/* Floating Tags */
+.floatingTag {
+  position: absolute;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 3;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
 }
 
+.floatingTag:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 8px 30px rgba(237, 109, 143, 0.15);
+}
+
+/* Tag Positions & Styles */
+.tag1 {
+  top: 12%;
+  left: 5%;
+  color: var(--primary);
+  background: rgba(237, 109, 143, 0.08);
+  border-color: rgba(237, 109, 143, 0.2);
+  transform: rotate(-8deg);
+  animation: floatTag 6s ease-in-out infinite, tagFadeIn 0.6s ease 0.3s forwards;
+}
+
+.tag2 {
+  bottom: 18%;
+  right: 0%;
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: rotate(4deg);
+  animation: floatTagReverse 7s ease-in-out infinite, tagFadeIn 0.6s ease 0.5s forwards;
+}
+
+.tag3 {
+  top: 25%;
+  right: 0%;
+  color: #bbb;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: rotate(6deg);
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  animation: floatTag 8s ease-in-out infinite, tagFadeIn 0.6s ease 0.7s forwards;
+}
+
+.tag4 {
+  bottom: 25%;
+  left: 2%;
+  color: var(--primary);
+  background: rgba(237, 109, 143, 0.08);
+  border-color: rgba(237, 109, 143, 0.2);
+  transform: rotate(-4deg);
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  animation: floatTagReverse 5s ease-in-out infinite, tagFadeIn 0.6s ease 0.9s forwards;
+}
+
+.tag5 {
+  top: 5%;
+  right: 15%;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+  border-color: rgba(74, 222, 128, 0.2);
+  transform: rotate(3deg);
+  font-size: 0.8rem;
+  animation: floatTag 7s ease-in-out infinite, tagFadeIn 0.6s ease 0.6s forwards;
+}
+
+.tag6 {
+  bottom: 8%;
+  left: 20%;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  border-color: rgba(251, 191, 36, 0.2);
+  transform: rotate(-6deg);
+  font-size: 0.8rem;
+  animation: floatTagReverse 6s ease-in-out infinite, tagFadeIn 0.6s ease 1.1s forwards;
+}
+
+/* Decorative Dots */
+.dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.4;
+}
+
+.dot1 {
+  top: 35%;
+  left: 30%;
+  animation: pulseDot 3s ease-in-out infinite;
+}
+
+.dot2 {
+  top: 60%;
+  right: 25%;
+  animation: pulseDot 4s ease-in-out 1s infinite;
+}
+
+.dot3 {
+  bottom: 35%;
+  left: 45%;
+  animation: pulseDot 3.5s ease-in-out 0.5s infinite;
+}
+
+/* Scroll Button */
 .heroScrollBtn {
   position: absolute;
   bottom: 40px;
@@ -63,6 +296,10 @@
   gap: 10px;
   opacity: 0;
   animation: fadeIn 1s ease 1s forwards;
+}
+
+.heroScrollBtn:hover {
+  transform: translateX(-50%) translateY(3px);
 }
 
 .scrollBtnText {
@@ -92,162 +329,70 @@
   animation: scrollMouse 2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
 }
 
-.heroVisual {
-  flex: 1;
-  position: relative;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logoContainer {
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  position: relative;
-  animation: floatSlow 6s ease-in-out infinite;
-}
-
-.logoImage {
-  width: 65%;
-  height: 65%;
-  border-radius: 20px;
-  object-fit: contain;
-}
-
-/* Desktop - Larger logo */
-@media (min-width: 1025px) {
-  .logoContainer {
-    width: 180px;
-    height: 180px;
+/* Animations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
   }
-
-  .logoImage {
-    width: 75%;
-    height: 75%;
-  }
-}
-
-.contentNode {
-  background: rgba(20, 20, 20, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 15px 25px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  position: absolute;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  font-family: var(--font-montserrat), sans-serif;
-  font-weight: 600;
-  color: #fff;
-  white-space: nowrap;
-  z-index: 2;
-}
-
-.nodeIcon {
-  width: 55px;
-  height: 55px;
-  border-radius: 12px;
-  background: rgba(237, 109, 143, 0.1);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-}
-
-.nodeContent {
-  text-align: left;
-}
-
-.nodeTitle {
-  font-size: 0.8rem;
-  color: #888;
-}
-
-.nodeSub {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.node-1 {
-  top: 12%;
-  right: 8%;
-  transform: none;
-  animation: floatSlow 6s ease-in-out infinite;
-}
-
-.node-2 {
-  bottom: 10%;
-  right: 8%;
-  transform: none;
-  animation: floatDelayed 7s ease-in-out infinite;
-}
-
-.node-3 {
-  top: 12%;
-  left: 8%;
-  transform: none;
-  animation: floatDelayed 8s ease-in-out infinite;
-}
-
-.node-4 {
-  bottom: 10%;
-  left: 8%;
-  transform: none;
-  animation: floatSlow 5s ease-in-out infinite;
-}
-
-.desktopLines {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-.mobileLines {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.8;
-  display: none;
-}
-
-.line {
-  stroke: var(--primary);
-  stroke-width: 2;
-  stroke-dasharray: 8, 8;
-  opacity: 0.9;
-}
-
-@keyframes floatSlow {
-  0%, 100% {
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-15px);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-@keyframes floatDelayed {
+@keyframes tagFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatTag {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(var(--rotate, 0deg));
   }
   50% {
-    transform: translateY(15px);
+    transform: translateY(-12px) rotate(var(--rotate, 0deg));
+  }
+}
+
+@keyframes floatTagReverse {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--rotate, 0deg));
+  }
+  50% {
+    transform: translateY(12px) rotate(var(--rotate, 0deg));
+  }
+}
+
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.5);
   }
 }
 
@@ -268,99 +413,112 @@
   }
 }
 
-@keyframes slideUpFade {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Mobile Responsive */
 @media (max-width: 1024px) {
-  .heroText {
-    width: 100%;
-    align-items: center;
-    text-align: center;
-    padding: 0;
-  }
-
-  .heroVisual {
-    width: 100%;
-    height: 300px;
-    margin-top: -60px;
-  }
-
   .heroSection {
+    padding: 100px 5% 80px;
+  }
+
+  .heroContent {
     flex-direction: column;
     text-align: center;
-    padding-top: 110px;
-    padding-bottom: 140px;
+    gap: 40px;
   }
 
-  .mobileLines {
-    display: block;
+  .heroText {
+    align-items: center;
+    text-align: center;
   }
 
-  .desktopLines {
+  .keywordsVisual {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .ringsWrap {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+  }
+
+  .tagsWrap {
+    position: relative;
+    inset: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .gradientRing {
+    width: 180px;
+    height: 180px;
+  }
+
+  .gradientRingInner {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Tags become a wrapped flex grid on mobile */
+  .floatingTag {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    animation: tagFadeIn 0.6s ease forwards !important;
+    font-size: 0.78rem;
+    padding: 8px 16px;
+  }
+
+  /* Center element stays absolute within visual */
+  .centerElement {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    z-index: 5;
+  }
+
+  /* Dots hidden on mobile */
+  .dot {
     display: none;
   }
 
-  .description {
-    margin-bottom: 28px;
-  }
-
-  .contentNode {
-    padding: 6px 8px;
-    font-size: 0.7rem;
-    width: auto;
-    max-width: 55%;
-    white-space: normal;
-    text-align: left;
-  }
-
-  .nodeIcon {
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    margin-right: 6px;
-  }
-
-  .node-1 {
-    top: -10px;
-    left: -10px;
-    right: auto;
-    bottom: auto;
-    animation: floatSlow 4s ease-in-out infinite;
-  }
-
-  .node-2 {
-    top: -20px;
-    right: -10px;
-    left: auto;
-    bottom: auto;
-    animation: floatDelayed 5s ease-in-out infinite;
-  }
-
-  .node-3 {
-    bottom: -10px;
-    left: -10px;
-    right: auto;
-    top: auto;
-    animation: floatDelayed 6s ease-in-out infinite;
-  }
-
-  .node-4 {
-    bottom: -10px;
-    right: -10px;
-    left: auto;
-    top: auto;
-    animation: floatSlow 5s ease-in-out infinite;
-  }
-
   .heroScrollBtn {
-    bottom: 30px;
+    bottom: 20px;
   }
 }
+
+@media (max-width: 600px) {
+  .heroSection {
+    padding: 90px 4% 80px;
+  }
+
+  .gradientRing {
+    width: 150px;
+    height: 150px;
+  }
+
+  .gradientRingInner {
+    width: 100px;
+    height: 100px;
+  }
+
+  .floatingTag {
+    font-size: 0.72rem;
+    padding: 6px 12px;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+}
+

@@ -46,7 +46,7 @@ const Footer = () => {
                         </a>
 
                         {/* Mail */}
-                        <a href="mailto:iletisim@fogistanbul.com" className={styles.socialIcon} aria-label="E-posta gönder: iletisim@fogistanbul.com">
+                        <a href="mailto:fogistanbul@gmail.com" className={styles.socialIcon} aria-label="E-posta gönder: fogistanbul@gmail.com">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                 <polyline points="22,6 12,13 2,6"></polyline>
@@ -89,16 +89,16 @@ const Footer = () => {
                     <div className={styles.contactItem}>
                         <span className={`material-symbols-outlined ${styles.contactIcon}`} aria-hidden="true">location_on</span>
                         <address style={{ fontStyle: 'normal' }}>
-                            Levent, Büyükdere Cd. No:123<br />Şişli / İstanbul
+                            23 Nisan Mah. 241. Sk. No: 8<br />İç Kapı No: 42, Nilüfer / Bursa
                         </address>
                     </div>
                     <div className={styles.contactItem}>
                         <span className={`material-symbols-outlined ${styles.contactIcon}`} aria-hidden="true">mail</span>
-                        <a href="mailto:iletisim@fogistanbul.com" className={styles.contactLink} aria-label="E-posta gönder: iletisim@fogistanbul.com">iletisim@fogistanbul.com</a>
+                        <a href="mailto:fogistanbul@gmail.com" className={styles.contactLink} aria-label="E-posta gönder: fogistanbul@gmail.com">fogistanbul@gmail.com</a>
                     </div>
                     <div className={styles.contactItem}>
                         <span className={`material-symbols-outlined ${styles.contactIcon}`} aria-hidden="true">call</span>
-                        <a href="tel:+902125550123" className={styles.contactLink} aria-label="Telefon ara: +90 (212) 555 01 23">+90 (212) 555 01 23</a>
+                        <a href="tel:+905434062580" className={styles.contactLink} aria-label="Telefon ara: +90 543 406 25 80">+90 543 406 25 80</a>
                     </div>
                 </div>
 
@@ -106,11 +106,12 @@ const Footer = () => {
 
             {/* BOTTOM */}
             <div className={styles.footerBottom}>
-                <div>© 2025 FOG İstanbul. Tüm Hakları Saklıdır.</div>
-                <div className={styles.footerBottomLinks}>
-                    <Link href="/gizlilik" className={styles.footerBottomLink}>Gizlilik</Link>
-                    <Link href="/kullanim" className={styles.footerBottomLink}>Şartlar</Link>
-                </div>
+                <div>© 2026 FOG İstanbul. Tüm Hakları Saklıdır.</div>
+                <nav className={styles.footerBottomLinks} aria-label="Yasal bağlantılar">
+                    <Link href="/gizlilik-politikasi" className={styles.footerBottomLink}>Gizlilik</Link>
+                    <Link href="/kvkk" className={styles.footerBottomLink}>KVKK</Link>
+                    <Link href="/cerez-politikasi" className={styles.footerBottomLink}>Çerezler</Link>
+                </nav>
             </div>
 
         </footer>

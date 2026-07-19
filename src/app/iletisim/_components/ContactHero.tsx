@@ -26,14 +26,14 @@ export default function ContactHero({ onScrollToForm }: ContactHeroProps) {
                 </div>
                 <div className={styles.detailItem}>
                     <span className={styles.label}>DİREKT HAT</span>
-                    <a href="tel:+902125550000" className={`${styles.value} ${styles.valueLink}`} aria-label="Telefon ara: +90 212 555 0000">+90 212 555 0000</a>
+                    <a href="tel:+905434062580" className={`${styles.value} ${styles.valueLink}`} aria-label="Telefon ara: +90 543 406 25 80">+90 543 406 25 80</a>
                 </div>
             </div>
 
             <div className={`${styles.contactDetails} ${styles.contactDetailsMargin}`}>
                 <div className={styles.detailItem}>
                     <span className={styles.label}>E-POSTA</span>
-                    <a href="mailto:iletisim@fogistanbul.com" className={`${styles.value} ${styles.valueLink}`} aria-label="E-posta gönder: iletisim@fogistanbul.com">iletisim@fogistanbul.com</a>
+                    <a href="mailto:fogistanbul@gmail.com" className={`${styles.value} ${styles.valueLink}`} aria-label="E-posta gönder: fogistanbul@gmail.com">fogistanbul@gmail.com</a>
                 </div>
             </div>
 

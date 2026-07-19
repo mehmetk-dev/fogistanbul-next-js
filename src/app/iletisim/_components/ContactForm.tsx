@@ -120,7 +120,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
                             }
                         }
                         
-                        errorMessage += ' Lütfen daha sonra tekrar deneyin veya doğrudan info@fogistanbul.com adresine e-posta gönderebilirsiniz.';
+                        errorMessage += ' Lütfen daha sonra tekrar deneyin veya doğrudan fogistanbul@gmail.com adresine e-posta gönderebilirsiniz.';
                         
                         setSubmitError(errorMessage);
                         showError(errorMessage, 7000);

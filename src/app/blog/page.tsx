@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-    title: 'Blog | FOG İstanbul',
+    title: 'Blog',
     description: 'Dijital pazarlama, web tasarım trendleri, SEO ipuçları ve teknoloji dünyasından en güncel haberler ve stratejiler.',
     keywords: ['dijital pazarlama blog', 'web tasarım trendleri', 'seo ipuçları', 'teknoloji haberleri', 'dijital strateji', 'marketing blog'],
     openGraph: {

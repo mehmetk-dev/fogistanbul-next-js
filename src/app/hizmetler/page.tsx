@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import HizmetlerClient from './HizmetlerClient';
 
 export const metadata: Metadata = {
-    title: 'Hizmetlerimiz | FOG İstanbul',
+    title: 'Hizmetlerimiz',
     description: 'FOG İstanbul\'un sunduğu dijital pazarlama, web tasarım, sosyal medya yönetimi, içerik pazarlama, CRM otomasyon ve prodüksiyon hizmetleri.',
     keywords: ['dijital pazarlama', 'web tasarım', 'sosyal medya yönetimi', 'içerik pazarlama', 'CRM', 'prodüksiyon', 'basılı medya', 'reklam yönetimi'],
     openGraph: {

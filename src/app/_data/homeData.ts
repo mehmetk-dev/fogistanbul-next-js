@@ -153,7 +153,7 @@ export const agencySchema = {
     "image": "https://fogistanbul.com/logo.png",
     "@id": "https://fogistanbul.com",
     "url": "https://fogistanbul.com",
-    "telephone": "+902125550000",
+    "telephone": "+905434062580",
     "priceRange": "$$",
     "description": "İstanbul merkezli FOG Ajans; Web Tasarım, Sosyal Medya Yönetimi, SEO ve Video Prodüksiyon hizmetleri sunan 360° dijital performans ajansıdır.",
     "address": {

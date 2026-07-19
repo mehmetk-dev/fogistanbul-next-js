@@ -9,17 +9,44 @@ import { env } from './env';
  * 
  * API çağrıları internal URL kullanır (daha hızlı, network içi)
  * Görseller public URL kullanır (tarayıcıdan erişilebilir olmalı)
+ * 
+ * Ghost env değişkenleri opsiyoneldir - sadece blog sayfalarında kullanılır.
+ * Eksikse diğer sayfalar etkilenmez.
  */
-const ghostApiUrl = env.GHOST_INTERNAL_URL || env.NEXT_PUBLIC_GHOST_URL;
-const ghostPublicUrl = env.NEXT_PUBLIC_GHOST_URL;
 
-// Ghost API singleton instance
-// Uses internal URL for API calls (Docker network)
-const api = new GhostContentAPI({
-    url: ghostApiUrl,
-    key: env.NEXT_PUBLIC_GHOST_CONTENT_KEY,
-    version: 'v5.0'
-});
+let _api: InstanceType<typeof GhostContentAPI> | null = null;
+
+/**
+ * Ghost API singleton instance - lazy initialization
+ * Sadece blog sayfalarında çağrıldığında initialize edilir.
+ * Ghost env'leri yoksa hata fırlatır.
+ */
+function getApi(): InstanceType<typeof GhostContentAPI> {
+    if (!_api) {
+        const ghostUrl = env.NEXT_PUBLIC_GHOST_URL;
+        const ghostKey = env.NEXT_PUBLIC_GHOST_CONTENT_KEY;
+
+        if (!ghostUrl || !ghostKey || ghostKey === 'development-key-placeholder') {
+            throw new Error(
+                '❌ Ghost CMS yapılandırması eksik!\n' +
+                'Blog sayfası için NEXT_PUBLIC_GHOST_URL ve NEXT_PUBLIC_GHOST_CONTENT_KEY gereklidir.\n' +
+                '.env.local dosyanızı kontrol edin.'
+            );
+        }
+
+        const ghostApiUrl = env.GHOST_INTERNAL_URL || ghostUrl;
+        _api = new GhostContentAPI({
+            url: ghostApiUrl,
+            key: ghostKey,
+            version: 'v5.0'
+        });
+    }
+    return _api;
+}
+
+function getGhostPublicUrl(): string {
+    return env.NEXT_PUBLIC_GHOST_URL || '';
+}
 
 /**
  * Internal Ghost URL'i public URL'e dönüştür (görseller için)
@@ -31,7 +58,7 @@ export function convertToPublicUrl(url: string | null): string | null {
     if (!env.GHOST_INTERNAL_URL) return url; // Internal URL yoksa dönüştürme gerekmez
     
     // Internal URL'i public URL ile değiştir
-    return url.replace(env.GHOST_INTERNAL_URL, ghostPublicUrl);
+    return url.replace(env.GHOST_INTERNAL_URL, getGhostPublicUrl());
 }
 
 export interface GhostPost {
@@ -91,7 +118,7 @@ function normalizePostUrls(post: GhostPost): GhostPost {
  */
 export async function getAllPostsNoCache(): Promise<GhostPost[]> {
     try {
-        const posts = await api.posts.browse({
+        const posts = await getApi().posts.browse({
             include: ['tags', 'authors'],
             limit: 'all',
             order: 'published_at DESC',
@@ -111,7 +138,7 @@ export async function getAllPosts(): Promise<GhostPost[]> {
     return unstable_cache(
         async () => {
             try {
-                const posts = await api.posts.browse({
+                const posts = await getApi().posts.browse({
                     include: ['tags', 'authors'],
                     limit: 'all',
                     order: 'published_at DESC',
@@ -142,7 +169,7 @@ export async function getPostBySlug(slug: string): Promise<GhostPost | null> {
     return unstable_cache(
         async () => {
             try {
-                const post = await api.posts.read(
+                const post = await getApi().posts.read(
                     { slug },
                     { include: ['tags', 'authors'] }
                 );
@@ -178,7 +205,7 @@ export async function getRelatedPosts(
 
     try {
         const tagSlugs = tags.map((tag) => tag.slug).join(',');
-        const posts = (await api.posts.browse({
+        const posts = (await getApi().posts.browse({
             include: ['tags', 'authors'],
             filter: `tag:[${tagSlugs}]+id:-${currentPostId}`,
             limit,
@@ -216,7 +243,7 @@ async function getRecentPosts(
         const allExcluded = excludeId ? [excludeId, ...excludeIds] : excludeIds;
         const filterIds = allExcluded.join(',');
 
-        const posts = await api.posts.browse({
+        const posts = await getApi().posts.browse({
             include: ['tags', 'authors'],
             filter: filterIds ? `id:-[${filterIds}]` : undefined,
             limit,
@@ -269,7 +296,7 @@ export async function getPaginatedPosts(
             try {
                 const filter = tagSlug ? `tag:${tagSlug}` : undefined;
                 
-                const response = await api.posts.browse({
+                const response = await getApi().posts.browse({
                     include: ['tags', 'authors'],
                     limit,
                     page,
@@ -324,7 +351,7 @@ export async function getAllTags(): Promise<GhostTag[]> {
     return unstable_cache(
         async () => {
             try {
-                const tags = await api.tags.browse({
+                const tags = await getApi().tags.browse({
                     limit: 'all',
                     filter: 'visibility:public',
                 });

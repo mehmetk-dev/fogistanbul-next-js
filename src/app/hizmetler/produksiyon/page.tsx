@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ProduksiyonClient from './ProduksiyonClient';
 
 export const metadata: Metadata = {
-    title: 'Fotoğraf ve Video Prodüksiyon | FOG İstanbul',
+    title: 'Fotoğraf ve Video Prodüksiyon',
     description: 'Tanıtım filmi, drone çekimi, YouTube içerik üretimi ve profesyonel fotoğrafçılık. Markanızı sinematik kalitede anlatıyoruz.',
     keywords: ['video prodüksiyon', 'tanıtım filmi', 'drone çekimi', 'youtube içerik', 'profesyonel fotoğrafçılık', 'video editing', 'cinematography'],
     openGraph: {

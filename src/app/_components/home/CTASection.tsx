@@ -27,7 +27,7 @@ export default function CTASection() {
                         <span className="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                     </Link>
                     <a
-                        href="tel:+902125550123"
+                        href="tel:+905434062580"
                         className={styles.phoneLink}
                         aria-label="Telefon ara: +90 (212) 555 00 00"
                     >
