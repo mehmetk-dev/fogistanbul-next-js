@@ -80,3 +80,11 @@ test('placeholder portfolio claims are not published as customer work', async ()
   assert.doesNotMatch(data, /images\.unsplash\.com|Vogue Moda|Nova FinTech|Coffee Lab/);
   assert.match(portfolio, /Gerçek proje içeriklerimizi hazırlıyoruz/);
 });
+
+test('home animations wait for browser hydration before mutating class names', async () => {
+  const home = await source('src/app/HomeClient.tsx');
+
+  assert.match(home, /window\.addEventListener\('load', markAnimationsReady/);
+  assert.match(home, /if \(!animationsReady\) return;/);
+  assert.match(home, /\[animationsReady, checkInitialVisibility\]/);
+});
