@@ -5,7 +5,6 @@ import {
   HeroSection,
   ManifestoSection,
   ProcessSection,
-  TeamSection,
   MediaSection,
   FooterCTA
 } from '@/app/hakkimizda/_components';
@@ -27,7 +26,6 @@ const Hakkimizda = () => {
       <HeroSection />
       <ManifestoSection />
       <ProcessSection />
-      <TeamSection />
       <MediaSection />
       <FooterCTA />
     </main>

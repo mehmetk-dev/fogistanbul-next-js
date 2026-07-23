@@ -12,10 +12,10 @@ export default function PortfoyHero() {
                     Portfolio
                 </div>
                 <h1 className={styles.title}>
-                    SEÇİLMİŞ <span className={styles.titleHighlight}>İŞLER.</span>
+                    GERÇEK <span className={styles.titleHighlight}>İŞLER.</span>
                 </h1>
                 <p className={styles.description}>
-                    Sıradanlığa meydan okuyan markalar için ürettiğimiz dijital deneyimler, tasarımlar ve stratejiler.
+                    Yayın izni alınmış çalışmalarımızı ve ölçülebilir sonuçlarını burada paylaşacağız.
                 </p>
             </div>
         </section>

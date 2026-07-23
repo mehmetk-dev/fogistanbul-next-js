@@ -27,7 +27,7 @@ export const services = [
         icon: 'share',
         title: 'SOSYAL MEDYA',
         subtitle: 'Etkileşiminizi katlıyoruz',
-        description: 'Organik takipçi kazandıran, markanızın sesini duyuran ve etkileşimi katlayan profesyonel yönetim.',
+        description: 'Firmanızı veya markanızı doğru hedef kitleye duyuran, organik görünürlüğü ve etkileşimi artıran profesyonel sosyal medya yönetimi.',
         tags: ['Instagram & TikTok', 'Community Management', 'Viral İçerik', 'Influencer Marketing', 'Reels Production'],
         link: '/hizmetler/sosyal-medya'
     },
@@ -36,7 +36,7 @@ export const services = [
         icon: 'web',
         title: 'WEB TASARIM',
         subtitle: 'Dijital vitrininizi tasarlıyoruz',
-        description: 'Müşteriye kolay erişim ve potansiyel müşterileri hızlı satışa çevirmek için tasarlanmış, yüksek performanslı web sistemleri.',
+        description: 'Site ziyaretçilerine kullanım kolaylığı sunan; ürün ve hizmetlerin satış veya dönüşüm oranını artırmayı hedefleyen yüksek performanslı web siteleri.',
         tags: ['UX/UI Tasarım', 'E-Ticaret', 'Kurumsal Web', 'Hızlı Arayüz', 'Mobil Uyumlu'],
         link: '/hizmetler/web-tasarim'
     },

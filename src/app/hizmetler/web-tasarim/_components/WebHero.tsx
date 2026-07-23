@@ -50,7 +50,8 @@ export default function WebHero() {
                     Müşteri <span className={styles.titleHighlight}>Getiren</span><br />Tasarımlar.
                 </h1>
                 <p className={styles.description}>
-                    Sadece güzel görünen değil, ziyaretçiyi müşteriye dönüştüren web siteleri kuruyoruz.
+                    Site ziyaretçilerine kullanım kolaylığı sunan, ürün ve hizmetlerin satış
+                    veya dönüşüm oranını artırmayı hedefleyen web siteleri tasarlıyoruz.
                 </p>
 
                 {/* Trust stats & metrics */}

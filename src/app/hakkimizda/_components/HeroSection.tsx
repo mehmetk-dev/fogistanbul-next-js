@@ -13,7 +13,7 @@ export default function HeroSection() {
                         <span className={`${styles.heroTitleBlock} ${styles.heroTitleAccent}`}>ONU İNŞA ET.</span>
                     </h1>
                     <div className={styles.heroSubtitle}>
-                        FOG İSTANBUL, MODERN MARKALAR İÇİN YENİ NESİL DİJİTAL ÇÖZÜMLER ÜRETİR.
+                        FOG İstanbul, markanızı Bilgi Çağı&apos;na taşır, yeni nesil dijital çözümler sunar.
                     </div>
                 </div>
 

@@ -12,7 +12,8 @@ export default function ManifestoSection() {
                 <div className={styles.manifestoText}>
                     Adımızdaki FOG, <span className={styles.highlight}>&quot;Focus On Growth&quot;</span> yani &quot;Büyümeye Odaklan&quot; anlamına gelir.<br /><br />
                     Biz, işletmenizin tüm dijital ihtiyaçlarını tek merkezden yöneten bir <span className={styles.manifestoTextWhite}>dijital çözümler grubuyuz.</span><br />
-                    Karmaşık terimlerle kafanızı karıştırmıyoruz. İster bir KOBİ olun, ister büyük bir marka; sizin dilinizden konuşan, bütçenizi koruyan ve işinizi büyüten <span className={styles.highlight}>şeffaf bir ekibiz.</span>
+                    Sizin dilinizden konuşuyor, bütçenizi koruyor ve hedeflerinize en kolay yoldan ulaşmanız için çalışıyoruz.
+                    <span className={styles.highlight}> Lafı uzatmıyor, büyümenize odaklanıyoruz!</span>
                 </div>
                 {/* Brand Logo for Mobile "Design" Feel */}
                 <img src="/assets/fog_logo_pink.png" alt="FOG Design" className={styles.manifestoLogo} />
@@ -25,23 +26,23 @@ export default function ManifestoSection() {
                 <div className={styles.visionBox}>
                     <div className={styles.visionTitle}>VİZYONUMUZ</div>
                     <div className={styles.visionText}>
-                        Her ölçekten markanın, dijital dünyada &quot;büyük oyuncularla&quot; aynı kalitede
-                        temsil edilmesini sağlamak ve teknolojiyi herkes için erişilebilir kılmak.
+                        Firmanızın ve markanızın dijital dünyaya adaptasyonunu sağlamak ve
+                        teknolojiyi her firma için erişilebilir kılmak.
                     </div>
                 </div>
                 <div className={styles.visionBox}>
                     <div className={styles.visionTitle}>MİSYONUMUZ</div>
                     <div className={styles.visionText}>
-                        Karmaşık süreçleri basitleştirmek. Bütçenizi aşan değil, size kazandıran;
-                        estetik ve fonksiyonu birleştiren akıllı çözümler üretmek.
+                        İşletmelerin dijitalleşme süreçlerini kolaylaştırmak; bütçe dostu, size kazandıran,
+                        estetik ile işlevselliği birleştiren çözümler üretmek.
                     </div>
                 </div>
                 {/* Added 3rd Column to Fill Space */}
                 <div className={styles.visionBox}>
                     <div className={styles.visionTitle}>DEĞERLERİMİZ</div>
                     <div className={styles.visionText}>
-                        %100 Şeffaflık, ulaşılabilir bütçeler ve sonuç odaklı stratejiler.
-                        Bizim için başarı, sizin büyüme oranınızdır.
+                        İş ortaklarımıza %100 şeffaflık sunmak ve ulaşılabilir bütçelerle sonuç odaklı
+                        stratejiler üretmek. Bizim için başarı, firmanızın ve markanızın büyüme oranıdır.
                     </div>
                 </div>
             </section>

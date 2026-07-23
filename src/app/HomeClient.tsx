@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useCallback, useState } from 'react';
+import { useEffect, useMemo, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { agencySchema } from '@/app/_data/homeData';
@@ -15,18 +15,11 @@ const ServicesSection = dynamic(() => import('@/app/_components/home/ServicesSec
   loading: () => <LoadingSkeleton height="300px" />,
 });
 
-const PortfolioSection = dynamic(() => import('@/app/_components/home/PortfolioSection'), {
-  loading: () => <LoadingSkeleton height="400px" />,
-});
-
 const CTASection = dynamic(() => import('@/app/_components/home/CTASection'), {
   loading: () => <LoadingSkeleton height="200px" />,
 });
 
 const Home = () => {
-  // Hydration tamamlandıktan sonra animasyonları başlat
-  const [isHydrated, setIsHydrated] = useState(false);
-
   // Memoize animation class names
   const animationClasses = useMemo(
     () => '.fade-in-up, .slide-in-left, .slide-in-right, .scale-in, .zoom-rotate-in, .blur-in, .bounce-in, .flip-in',
@@ -61,15 +54,8 @@ const Home = () => {
     });
   }, [animationClasses]);
 
-  // Hydration tamamlandığını işaretle
+  // Effects run only after the client has hydrated.
   useEffect(() => {
-    setIsHydrated(true);
-  }, []);
-
-  // Check visibility - Sadece hydration sonrası çalışır
-  useEffect(() => {
-    if (!isHydrated) return;
-
     // Multiple checks with different timings to ensure elements are visible
     const checkMultiple = () => {
       checkInitialVisibility();
@@ -93,12 +79,10 @@ const Home = () => {
       clearTimeout(timeout2);
       clearTimeout(timeout3);
     };
-  }, [isHydrated, checkInitialVisibility]);
+  }, [checkInitialVisibility]);
 
-  // Scroll Animation Observer - Sadece hydration sonrası çalışır
+  // Scroll Animation Observer
   useEffect(() => {
-    if (!isHydrated) return;
-
     let observer: IntersectionObserver | null = null;
     let timeoutId: NodeJS.Timeout | null = null;
     let idleCallbackId: number | null = null;
@@ -182,7 +166,7 @@ const Home = () => {
         observer.disconnect();
       }
     };
-  }, [isHydrated, handleIntersection, animationClasses, checkInitialVisibility]);
+  }, [handleIntersection, animationClasses, checkInitialVisibility]);
 
   return (
     <main style={{ minHeight: '100vh' }}>
@@ -198,7 +182,6 @@ const Home = () => {
       <HeroSection />
       <ManifestoSection />
       <ServicesSection />
-      <PortfolioSection />
       <CTASection />
     </main>
   );

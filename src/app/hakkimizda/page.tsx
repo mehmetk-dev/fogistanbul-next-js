@@ -3,8 +3,8 @@ import HakkimizdaClient from './HakkimizdaClient';
 
 export const metadata: Metadata = {
     title: 'Hakkımızda',
-    description: 'FOG İstanbul (Focus On Growth), işletmelerin büyümesine odaklanan dijital çözümler grubu. Ekibimiz ve değerlerimiz hakkında bilgi edinin.',
-    keywords: ['fog istanbul', 'dijital ajans', 'hakkımızda', 'ekip', 'değerler', 'misyon', 'vizyon'],
+    description: 'FOG İstanbul (Focus On Growth), firmaları ve markaları dijital dünyaya taşıyan, büyüme odaklı dijital dönüşüm ajansıdır.',
+    keywords: ['fog istanbul', 'dijital ajans', 'dijital dönüşüm ajansı', 'hakkımızda', 'değerler', 'misyon', 'vizyon'],
     openGraph: {
         title: 'Hakkımızda | FOG İstanbul',
         description: 'FOG İstanbul (Focus On Growth), işletmelerin büyümesine odaklanan dijital çözümler grubu.',

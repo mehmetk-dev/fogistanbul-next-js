@@ -28,7 +28,7 @@ export default function SocialHero() {
                     {/* 1. Title (Top) */}
                     <div className={styles.mobileTitleBlock}>
                         <h1>MARKANI <span className={styles.highlightText}>BÜYÜT.</span></h1>
-                        <p>Sosyal medya yönetimi ile markanızın dijital varlığını güçlendiriyoruz.</p>
+                        <p>Firmanızı veya markanızı doğru hedef kitleye duyuruyor, dijital görünürlüğünüzü güçlendiriyoruz.</p>
                     </div>
 
                     {/* 2. Phone (Middle) */}
@@ -62,8 +62,8 @@ export default function SocialHero() {
                             MARKANI <span className={styles.highlightText}>BÜYÜT.</span>
                         </h1>
                         <p className={styles.heroSubtitle}>
-                            Sosyal medya yönetimi ile markanızın dijital varlığını güçlendiriyor,
-                            hedef kitlenizle etkileşimi artırıyoruz.
+                            Firmanızı veya markanızı doğru hedef kitleye duyuruyor,
+                            organik görünürlüğünüzü ve etkileşiminizi artırıyoruz.
                         </p>
                     </div>
 

@@ -3,11 +3,11 @@ import PortfoyClient from './PortfoyClient';
 
 export const metadata: Metadata = {
     title: 'Portfolyo',
-    description: 'Web tasarım, branding, prodüksiyon ve dijital pazarlama alanındaki seçilmiş projelerimiz. Başarı hikayelerimizi keşfedin.',
+    description: 'FOG İstanbul gerçek proje çalışmalarını, verilen hizmetleri ve ölçülebilir sonuçlarıyla birlikte yakında paylaşacak.',
     keywords: ['portfolyo', 'projeler', 'web tasarım projeleri', 'dijital pazarlama örnekleri', 'başarı hikayeleri'],
     openGraph: {
         title: 'Portfolyo | FOG İstanbul',
-        description: 'Web tasarım, branding, prodüksiyon ve dijital pazarlama alanındaki seçilmiş projelerimiz.',
+        description: 'FOG İstanbul gerçek proje çalışmalarını ve ölçülebilir sonuçlarını yakında paylaşacak.',
         url: '/portfoy',
         type: 'website',
         images: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Portfolyo | FOG İstanbul',
-        description: 'Web tasarım, branding, prodüksiyon ve dijital pazarlama alanındaki seçilmiş projelerimiz.',
+        description: 'FOG İstanbul gerçek proje çalışmalarını ve ölçülebilir sonuçlarını yakında paylaşacak.',
         images: ['/og-image.webp'],
     },
     alternates: {

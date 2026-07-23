@@ -1,14 +1,10 @@
 "use client";
-import { useState } from 'react';
 import Script from 'next/script';
-import { portfolioSchema, projects } from '@/app/portfoy/_data/portfoyData';
-import { PortfoyHero, PortfoyFilters, PortfoyGrid, PortfoyCTA } from '@/app/portfoy/_components';
+import { portfolioSchema } from '@/app/portfoy/_data/portfoyData';
+import { PortfoyHero, PortfoyCTA } from '@/app/portfoy/_components';
 import styles from './PortfoyClient.module.css';
 
 const Portfoy = () => {
-    const [activeFilter, setActiveFilter] = useState('all');
-    const filteredProjects = activeFilter === 'all' ? projects : projects.filter((p) => p.tags.includes(activeFilter));
-
     return (
         <main className={styles.portfolioPage}>
             <Script
@@ -21,14 +17,16 @@ const Portfoy = () => {
             {/* Hero Section */}
             <PortfoyHero />
 
-            {/* Filters Section */}
-            <PortfoyFilters
-                activeFilter={activeFilter}
-                onFilterChange={setActiveFilter}
-            />
-
-            {/* Grid Section */}
-            <PortfoyGrid projects={filteredProjects} />
+            <section className={styles.preparingSection} aria-labelledby="portfolio-preparing-title">
+                <span className={`material-symbols-outlined ${styles.preparingIcon}`} aria-hidden="true">
+                    auto_awesome
+                </span>
+                <h2 id="portfolio-preparing-title">Portföyümüzü hazırlıyoruz</h2>
+                <p>
+                    Gerçek proje içeriklerimizi hazırlıyoruz. Her çalışmayı verilen hizmet,
+                    hedef ve elde edilen sonuçlarla birlikte yayınlayacağız.
+                </p>
+            </section>
 
             {/* CTA Section */}
             <PortfoyCTA />

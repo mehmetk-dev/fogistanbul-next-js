@@ -277,29 +277,26 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
 
                 {/* Submit Button */}
                 <div className={styles.btnContainer}>
-                    <span className={styles.btnLabel} aria-hidden="true">{isLoading ? 'GÖNDERİLİYOR...' : 'GÖNDERİMİ BAŞLAT'}</span>
-                    {isLoading ? (
-                        <div style={{ 
-                            width: '20px', 
-                            height: '20px', 
-                            border: '2px solid rgba(237, 109, 143, 0.3)',
-                            borderTopColor: '#ed6d8f',
-                            borderRadius: '50%',
-                            animation: 'spin 0.8s linear infinite',
-                            flexShrink: 0
-                        }} aria-hidden="true"></div>
-                    ) : (
-                        <span className={`material-symbols-outlined ${styles.arrowIcon}`} aria-hidden="true">trending_flat</span>
-                    )}
                     <button 
-                        className={styles.pushBtn} 
+                        className={styles.submitButton}
                         type="submit" 
                         disabled={isLoading}
                         aria-label={isLoading ? 'Mesaj gönderiliyor, lütfen bekleyin' : 'Formu gönder'}
                         aria-busy={isLoading}
                     >
-                        <span className={styles.pushBtnBack} aria-hidden="true"></span>
-                        <span className={styles.pushBtnFront} aria-hidden="true"></span>
+                        {isLoading ? (
+                            <>
+                                <span className={styles.loadingSpinner} aria-hidden="true" />
+                                Gönderiliyor...
+                            </>
+                        ) : (
+                            <>
+                                Mesajımı Gönder
+                                <span className={`material-symbols-outlined ${styles.submitIcon}`} aria-hidden="true">
+                                    arrow_forward
+                                </span>
+                            </>
+                        )}
                     </button>
                 </div>
 
