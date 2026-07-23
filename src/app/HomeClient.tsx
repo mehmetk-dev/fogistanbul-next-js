@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useCallback } from 'react';
+import { useEffect, useMemo, useCallback, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { agencySchema } from '@/app/_data/homeData';
@@ -20,6 +20,8 @@ const CTASection = dynamic(() => import('@/app/_components/home/CTASection'), {
 });
 
 const Home = () => {
+  const [animationsReady, setAnimationsReady] = useState(false);
+
   // Memoize animation class names
   const animationClasses = useMemo(
     () => '.fade-in-up, .slide-in-left, .slide-in-right, .scale-in, .zoom-rotate-in, .blur-in, .bounce-in, .flip-in',
@@ -54,8 +56,32 @@ const Home = () => {
     });
   }, [animationClasses]);
 
-  // Effects run only after the client has hydrated.
+  // Wait for the initial document and all server-rendered islands to hydrate
+  // before animation code mutates class names.
   useEffect(() => {
+    let readyTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+    const markAnimationsReady = () => {
+      readyTimeoutId = setTimeout(() => setAnimationsReady(true), 0);
+    };
+
+    if (document.readyState === 'complete') {
+      markAnimationsReady();
+    } else {
+      window.addEventListener('load', markAnimationsReady, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener('load', markAnimationsReady);
+      if (readyTimeoutId !== null) {
+        clearTimeout(readyTimeoutId);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!animationsReady) return;
+
     // Multiple checks with different timings to ensure elements are visible
     const checkMultiple = () => {
       checkInitialVisibility();
@@ -79,10 +105,12 @@ const Home = () => {
       clearTimeout(timeout2);
       clearTimeout(timeout3);
     };
-  }, [checkInitialVisibility]);
+  }, [animationsReady, checkInitialVisibility]);
 
   // Scroll Animation Observer
   useEffect(() => {
+    if (!animationsReady) return;
+
     let observer: IntersectionObserver | null = null;
     let timeoutId: NodeJS.Timeout | null = null;
     let idleCallbackId: number | null = null;
@@ -166,7 +194,7 @@ const Home = () => {
         observer.disconnect();
       }
     };
-  }, [handleIntersection, animationClasses, checkInitialVisibility]);
+  }, [animationsReady, handleIntersection, animationClasses, checkInitialVisibility]);
 
   return (
     <main style={{ minHeight: '100vh' }}>
