@@ -11,7 +11,10 @@ test('FOG is positioned as a digital transformation agency', async () => {
   ]);
 
   assert.match(layout, /FOG İstanbul \| Dijital Dönüşüm Ajansı/);
-  assert.match(homePage, /Dijital Dönüşüm Ajansı/);
+  assert.match(
+    homePage,
+    /title:\s*\{\s*absolute:\s*'FOG İstanbul \| Dijital Dönüşüm Ajansı'/s,
+  );
   assert.doesNotMatch(`${layout}\n${homePage}`, /Yeni Nesil Dijital Ajans/);
 });
 
