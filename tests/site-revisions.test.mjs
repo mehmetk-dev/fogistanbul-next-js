@@ -91,3 +91,11 @@ test('home animations wait for browser hydration before mutating class names', a
   assert.match(home, /if \(!animationsReady\) return;/);
   assert.match(home, /\[animationsReady, checkInitialVisibility\]/);
 });
+
+test('blog shows a preparing state only when no posts exist', async () => {
+  const grid = await source('src/app/blog/_components/BlogGrid.tsx');
+
+  assert.match(grid, /totalPosts === 0/);
+  assert.match(grid, /Blog hazırlanıyor/);
+  assert.match(grid, /Aradığınız blog yazısı bulunamadı/);
+});
