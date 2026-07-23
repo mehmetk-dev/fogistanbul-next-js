@@ -99,3 +99,10 @@ test('blog shows a preparing state only when no posts exist', async () => {
   assert.match(grid, /Blog hazırlanıyor/);
   assert.match(grid, /Aradığınız blog yazısı bulunamadı/);
 });
+
+test('global horizontal clipping preserves sticky service panels', async () => {
+  const globals = await source('src/app/globals.css');
+
+  assert.match(globals, /html\s*\{[^}]*overflow-x:\s*clip/s);
+  assert.match(globals, /body\s*\{[^}]*overflow-x:\s*clip/s);
+});
