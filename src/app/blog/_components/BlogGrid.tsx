@@ -8,14 +8,16 @@ import styles from './BlogGrid.module.css';
 
 interface BlogGridProps {
     posts: GhostPost[];
-    totalPosts: number; // Not used for logic, but maybe for info
+    totalPosts: number;
+    hasActiveFilter: boolean;
     currentPage: number;
     totalPages: number;
     onPageChange: (page: number) => void;
 }
 
-export default function BlogGrid({ posts, currentPage, totalPages, onPageChange }: BlogGridProps) {
+export default function BlogGrid({ posts, totalPosts, hasActiveFilter, currentPage, totalPages, onPageChange }: BlogGridProps) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
+    const showPreparingState = totalPosts === 0 && !hasActiveFilter;
 
     const formatDate = (dateStr: string) => {
         if (!dateStr) return { day: '', month: '', year: '' };
@@ -30,9 +32,23 @@ export default function BlogGrid({ posts, currentPage, totalPages, onPageChange 
     return (
         <section className={styles.gridSection}>
             {posts.length === 0 ? (
-                <div className={styles.emptyState}>
-                    Aradığınız blog yazısı bulunamadı.
-                </div>
+                showPreparingState ? (
+                    <div className={styles.preparingState}>
+                        <span className={`material-symbols-outlined ${styles.preparingIcon}`} aria-hidden="true">
+                            edit_note
+                        </span>
+                        <span className={styles.preparingEyebrow}>FOG İstanbul / Blog</span>
+                        <h2>Blog hazırlanıyor</h2>
+                        <p>
+                            Dijital dönüşüm, pazarlama ve teknoloji üzerine hazırladığımız
+                            içerikler çok yakında burada olacak.
+                        </p>
+                    </div>
+                ) : (
+                    <div className={styles.emptyState}>
+                        Aradığınız blog yazısı bulunamadı.
+                    </div>
+                )
             ) : (
                 <>
                     <div className={styles.postsGrid}>

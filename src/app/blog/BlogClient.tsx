@@ -83,6 +83,7 @@ const BlogClient = ({ posts, tags, pagination, activeTag }: BlogClientProps) => 
             <BlogGrid
                 posts={filteredPosts}
                 totalPosts={pagination.total}
+                hasActiveFilter={Boolean(activeTag) || Boolean(searchTerm)}
                 currentPage={pagination.page}
                 totalPages={pagination.pages}
                 onPageChange={handlePageChange}
